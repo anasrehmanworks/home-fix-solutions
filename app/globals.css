@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #17202a;
+  background: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-manrope), "Manrope", "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+  color: #17202a;
+  background: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), var(--font-manrope), Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.field {
+  @apply w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-ink shadow-sm outline-none transition duration-200 placeholder:text-slate-400 hover:border-slate-400 focus:border-brand-blue focus:ring-4 focus:ring-brand-sky/20;
+}
+
+.label {
+  @apply text-xs font-black uppercase text-slate-600;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand-red px-5 py-3 text-sm font-extrabold text-white shadow-crisp transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-brand-red/40;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand-blue px-5 py-3 text-sm font-extrabold text-white shadow-crisp transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-brand-sky/40;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 rounded-md border-2 border-brand-blue bg-white px-5 py-3 text-sm font-extrabold text-brand-blue transition hover:bg-brand-pale focus:outline-none focus:ring-2 focus:ring-brand-sky/40;
+}
+
+.premium-form {
+  @apply grid gap-5 rounded-md border border-slate-200 bg-white/95 p-5 shadow-crisp backdrop-blur md:p-6;
+}
+
+.premium-form-header {
+  @apply flex items-start gap-3 border-b border-slate-100 pb-4;
+}
+
+.premium-icon {
+  @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-brand-pale text-brand-blue;
+}
+
+.premium-grid {
+  @apply grid gap-4 md:grid-cols-2;
+}
+
+.slot-card {
+  @apply rounded-md border border-slate-200 bg-white px-3 py-3 text-center text-sm font-black text-slate-700 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand-blue hover:bg-brand-pale hover:text-brand-blue;
+}
+
+.slot-card input {
+  @apply sr-only;
+}
+
+.slot-card:has(input:checked) {
+  @apply border-brand-blue bg-brand-blue text-white shadow-crisp;
+}
+
+.step-pill {
+  @apply rounded-full bg-brand-pale px-4 py-2 text-xs font-black uppercase text-brand-blue;
+}
