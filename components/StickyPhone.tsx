@@ -1,33 +1,30 @@
-import { Phone } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+"use client";
+
+import { Phone, MessageCircle } from "lucide-react";
 import { site } from "@/lib/site";
 
 export function StickyPhone() {
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-      {/* WhatsApp */}
+    <>
+      {/* WhatsApp Button */}
       <a
         href="https://wa.me/17579084102?text=Hi%20Home%20Fix%20Solution,%20I%20need%20assistance."
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:w-44 hover:justify-start hover:px-5"
+        aria-label="WhatsApp"
+        className="fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl animate-bounce"
       >
-        <FaWhatsapp size={28} />
-        <span className="ml-3 hidden whitespace-nowrap text-sm font-semibold group-hover:block">
-          WhatsApp
-        </span>
+        <MessageCircle size={28} />
       </a>
 
-      {/* Phone */}
+      {/* Call Button */}
       <a
         href={site.phoneHref}
-        className="group flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-brand-red text-white shadow-xl transition-all duration-300 hover:w-52 hover:justify-start hover:px-5"
+        aria-label="Call Now"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl animate-pulse"
       >
-        <Phone size={24} />
-        <span className="ml-3 hidden whitespace-nowrap text-sm font-semibold group-hover:block">
-          Call Now
-        </span>
+        <Phone size={26} />
       </a>
-    </div>
+    </>
   );
 }
