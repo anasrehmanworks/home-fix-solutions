@@ -1,6 +1,7 @@
 "use client";
 
-import { Phone, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import { Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
 export function StickyPhone() {
@@ -12,9 +13,15 @@ export function StickyPhone() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
-        className="fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl animate-bounce"
+        className="fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl animate-bounce"
       >
-        <MessageCircle size={28} />
+        <Image
+          src="/whatsapp.svg"
+          alt="WhatsApp"
+          width={30}
+          height={30}
+          priority
+        />
       </a>
 
       {/* Call Button */}
