@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Phone } from "lucide-react";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { Facebook, Instagram } from "lucide-react";;
 import { site, statesServed } from "@/lib/site";
 
 export function Footer() {
@@ -135,7 +135,7 @@ export function Footer() {
               aria-label="Facebook"
               className="transition duration-200 hover:brightness-125"
             >
-              <FaFacebook size={34} color="#1877F2" />
+              <Facebook size={34} className="text-blue-500"  />
             </a>
 
             <a
@@ -145,7 +145,7 @@ export function Footer() {
               aria-label="Instagram"
               className="transition duration-200 hover:brightness-125"
             >
-              <FaInstagram size={34} color="#E4405F" />
+              <Instagram size={34} className="text-pink-500" />
             </a>
           </div>
         </div>
