@@ -46,7 +46,7 @@ export function Footer() {
 
           <ul className="grid gap-3 text-sm text-slate-300">
             <li>
-              <Link href="/services/garage-door" className="hover:text-white">
+              <Link href="/services/garage-door-repair" className="hover:text-white">
                 Garage Door
               </Link>
             </li>
