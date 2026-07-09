@@ -12,6 +12,19 @@ const transporter = nodemailer.createTransport({
 
 const FROM_EMAIL = process.env.EMAIL_FROM!;
 
+function verifyEnv() {
+  const missing: string[] = [];
+  if (!process.env.SMTP_HOST) missing.push("SMTP_HOST");
+  if (!process.env.SMTP_PORT) missing.push("SMTP_PORT");
+  if (!process.env.SMTP_USER) missing.push("SMTP_USER");
+  if (!process.env.SMTP_PASS) missing.push("SMTP_PASS");
+  if (!process.env.EMAIL_FROM) missing.push("EMAIL_FROM");
+  
+  if (missing.length > 0) {
+    throw new Error(`Missing environment variables on Vercel: ${missing.join(", ")}`);
+  }
+}
+
 // --- GLOBAL SITE URL RESOLUTION ---
 const WEBSITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ||
@@ -130,6 +143,7 @@ export async function sendBookingEmails(data: {
   appointmentSlot: string;
   couponCode?: string;
 }) {
+  verifyEnv();
   // Email to Owner
   await transporter.sendMail({
     from: `"Home Fix Solution" <${FROM_EMAIL}>`,
@@ -285,6 +299,7 @@ export async function sendContactEmails(data: {
   email: string;
   message: string;
 }) {
+  verifyEnv();
   // Email to Owner
   await transporter.sendMail({
     from: `"Home Fix Solution" <${FROM_EMAIL}>`,
@@ -368,6 +383,7 @@ export async function sendCareerEmails(
   },
   licenseFile?: File
 ) {
+  verifyEnv();
   // Email to Owner
   await transporter.sendMail({
     from: `"Home Fix Solution" <${FROM_EMAIL}>`,
@@ -489,6 +505,7 @@ export async function sendReviewEmails(data: {
   service: string;
   review: string;
 }) {
+  verifyEnv();
   // Email to Owner
   await transporter.sendMail({
     from: `"Home Fix Solution" <${FROM_EMAIL}>`,
