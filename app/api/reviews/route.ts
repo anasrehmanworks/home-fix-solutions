@@ -44,10 +44,10 @@ export async function POST(request: Request) {
     );
   } catch (error) {
     console.error(error);
-
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return submissionResponse(
       false,
-      "Something went wrong. Please try again.",
+      `Internal Server Error: ${errorMessage}`,
       500
     );
   }
