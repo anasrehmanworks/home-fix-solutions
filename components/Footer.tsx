@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone } from "lucide-react";
-import { Facebook, Instagram } from "lucide-react";;
+import { Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { site, statesServed } from "@/lib/site";
 
 export function Footer() {
   return (
     <footer className="bg-ink text-white">
       <div className="section-shell grid gap-10 py-12 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
+        {/* Logo & Contact */}
         <div>
           <div className="mb-4 flex items-center gap-3">
             <Image
@@ -29,12 +29,22 @@ export function Footer() {
             cleaning, and chimney care.
           </p>
 
+          {/* Phone */}
           <a
             href={site.phoneHref}
             className="mt-5 inline-flex items-center gap-2 rounded-md bg-brand-red px-4 py-3 text-sm font-black text-white"
           >
             <Phone size={17} />
             <span>{site.phone}</span>
+          </a>
+
+          {/* Email */}
+          <a
+            href="mailto:sales@homefixsolution.org"
+            className="mt-3 inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 py-3 text-sm font-black text-white transition hover:bg-white/20"
+          >
+            <Mail size={17} />
+            <span>sales@homefixsolution.org</span>
           </a>
         </div>
 
@@ -46,7 +56,10 @@ export function Footer() {
 
           <ul className="grid gap-3 text-sm text-slate-300">
             <li>
-              <Link href="/services/garage-door-repair" className="hover:text-white">
+              <Link
+                href="/services/garage-door-repair"
+                className="hover:text-white"
+              >
                 Garage Door
               </Link>
             </li>
@@ -135,7 +148,7 @@ export function Footer() {
               aria-label="Facebook"
               className="transition duration-200 hover:brightness-125"
             >
-              <Facebook size={34} className="text-blue-500"  />
+              <Facebook size={34} className="text-blue-500" />
             </a>
 
             <a
