@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Manrope, Outfit } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -33,15 +34,40 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${outfit.variable}`} suppressHydrationWarning>
+      <body
+        className={`${manrope.variable} ${outfit.variable}`}
+        suppressHydrationWarning
+      >
         <JsonLd data={localBusinessSchema()} />
+
         <Header />
+
         <main>{children}</main>
+
         <Footer />
+
         <StickyPhone />
+
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-X33QP2BCGM"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-X33QP2BCGM');
+          `}
+        </Script>
       </body>
     </html>
   );
