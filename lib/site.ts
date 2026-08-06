@@ -4,7 +4,7 @@ export const site = {
   name: "Home Fix Solution",
   phone: "757-908-4102",
   phoneHref: "tel:+17579084102",
-  url: "https://homefixsolution.com",
+  url: "https://homefixsolution.org",
   description:
     "Professional garage door services, air duct cleaning, and chimney cleaning for homeowners and businesses across 30+ states.",
   primaryCity: "Virginia Beach",
