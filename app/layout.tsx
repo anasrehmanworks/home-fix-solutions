@@ -27,6 +27,11 @@ export const metadata: Metadata = {
     template: "%s | Home Fix Solution"
   },
   description: site.description,
+
+  verification: {
+    google: "jNysP_bcD8B-qU6X1z-DX8-PtzqpPYZ7D-I7T0Chtls"
+  },
+
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
