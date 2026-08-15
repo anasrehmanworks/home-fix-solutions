@@ -74,7 +74,7 @@ export default function ContactPage() {
               {/* Google Map */}
               <div className="overflow-hidden rounded-md border border-slate-200 shadow-sm">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97028.8562569021!2d-74.46050881240647!3d40.538236232042664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3d37f68bea199%3A0xf22bc5a66f83d4ea!2sEdison%2C%20NJ%2C%20USA!5e0!3m2!1sen!2s!4v1783859796948!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d208642.4835825671!2d-80.98696864687537!3d35.205502342025646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541fc4fc381a81%3A0x884650e6bf43d164!2sCharlotte%2C%20NC%2C%20USA!5e0!3m2!1sen!2s!4v1786752084025!5m2!1sen!2s"
                   width="100%"
                   height="350"
                   style={{ border: 0 }}
