@@ -36,6 +36,11 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
     const data = (await response.json()) as { message?: string };
     setStatus(response.ok ? "sent" : "error");
     setMessage(data.message ?? (response.ok ? "Request received." : "Please check the form and try again."));
+    if (response.ok) {
+      const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({ event: "lead_form_success" });
+    }
   }
 
   function advance(formData: FormData, nextStep: number) {
