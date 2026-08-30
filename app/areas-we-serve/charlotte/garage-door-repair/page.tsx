@@ -241,9 +241,9 @@ export default function CharlotteGarageDoorRepairPage() {
                 <span>{site.phone}</span>
               </a>
 
-              <Link href="#book" className="btn-secondary">
-                Book Garage Door Repair
-              </Link>
+              <a href="#book" className="btn-secondary">
+  Book Garage Door Repair
+</a>
             </div>
           </div>
 
@@ -656,62 +656,7 @@ export default function CharlotteGarageDoorRepairPage() {
               </p>
             </section>
 
-            {/* CTA */}
-            <section className="mt-14 overflow-hidden rounded-lg bg-brand-blue p-7 text-white md:p-10">
-              <p className="text-sm font-black uppercase tracking-wide text-white/80">
-                Garage Door Repair in Charlotte
-              </p>
-
-              <h2 className="mt-2 text-3xl font-black md:text-4xl">
-                Schedule Garage Door Repair in Charlotte Today
-              </h2>
-
-              <p className="mt-5 max-w-3xl text-base leading-8 text-white/90">
-                A broken or unreliable garage door does not have to disrupt
-                your day. Home Fix Solution provides professional Garage Door
-                Repair in Charlotte for residential and commercial customers.
-              </p>
-
-              <p className="mt-4 max-w-3xl text-base leading-8 text-white/90">
-                Whether you need help with a broken spring, damaged cable,
-                faulty opener, worn roller, damaged panel, track problem, or
-                another garage door issue, our team can help you determine the
-                next step.
-              </p>
-
-              <p className="mt-4 max-w-3xl text-base leading-8 text-white/90">
-                For urgent problems, Emergency Garage Door Repair is also
-                available.
-              </p>
-
-              <div className="mt-7 rounded-md bg-white/10 p-5">
-                <p className="font-black">
-                  Need Garage Door Repair in Charlotte, NC?
-                </p>
-
-                <p className="mt-2 text-white/90">
-                  Call 757-908-4102 today to schedule service with Home Fix
-                  Solution.
-                </p>
-              </div>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href={site.phoneHref}
-                  className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 font-black text-brand-blue transition hover:opacity-90"
-                >
-                  <Phone size={17} />
-                  Call Now
-                </a>
-
-                <Link
-                  href="#book"
-                  className="inline-flex items-center rounded-md border border-white/40 px-5 py-3 font-black text-white transition hover:bg-white/10"
-                >
-                  Book Garage Door Repair Today
-                </Link>
-              </div>
-            </section>
+        
 
             {/* FAQ */}
             <section className="mt-14">
