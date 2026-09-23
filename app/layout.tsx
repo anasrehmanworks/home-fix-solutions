@@ -23,7 +23,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Home Fix Solution | Garage Door, Air Duct & Chimney Services",
+    default: "Home Fix Solution | Home Services Across 30+ States",
     template: "%s | Home Fix Solution"
   },
   description: site.description,

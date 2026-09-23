@@ -6,7 +6,7 @@ import { createMetadata, localBusinessSchema } from "@/lib/site";
 export const metadata = createMetadata({
   title: "Careers | Apply As A Technician",
   description:
-    "Apply as a technician with Home Fix Solution for garage door, air duct cleaning, and chimney cleaning service work.",
+    "Apply as a technician with Home Fix Solution for garage door, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith service work.",
   path: "/careers",
 });
 

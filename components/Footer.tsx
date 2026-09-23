@@ -19,14 +19,15 @@ export function Footer() {
             />
             <div>
               <p className="text-sm text-slate-300">
-                Garage Door, Air Duct, and Chimney Services
+                Nationwide Home Service Network
               </p>
             </div>
           </div>
 
           <p className="max-w-sm text-sm leading-6 text-slate-300">
             Professional service across 30+ states for garage doors, air duct
-            cleaning, and chimney care.
+            cleaning, chimney care, plumbing, electrical, and locksmith
+            requests.
           </p>
 
           {/* Phone */}
@@ -79,6 +80,24 @@ export function Footer() {
                 className="hover:text-white"
               >
                 Chimney Cleaning
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/services/plumbing" className="hover:text-white">
+                Plumbing
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/services/electrician" className="hover:text-white">
+                Electrician
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/services/locksmith" className="hover:text-white">
+                Locksmith
               </Link>
             </li>
           </ul>
@@ -165,7 +184,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10 py-4 text-center text-xs text-slate-400">
-        &copy; 2004 Home Fix Solution. All Rights Reserved.
+        &copy; 2026 Home Fix Solution. All Rights Reserved.
       </div>
     </footer>
   );

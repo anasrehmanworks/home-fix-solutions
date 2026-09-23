@@ -7,16 +7,16 @@ import { OffersSection } from "@/components/OffersSection";
 import { beforeAfterGallery, createMetadata, customerReviews, getServicesByCategory, localBusinessSchema, primaryServices, serviceCategories, site, statesServed } from "@/lib/site";
 
 export const metadata = createMetadata({
-  title: "Home Fix Solution | Garage Door, Air Duct & Chimney Services",
+  title: "Home Fix Solution | Home Services Across 30+ States",
   description:
-    "Book professional garage door repair, installation, opener service, air duct cleaning, and chimney cleaning with Home Fix Solution.",
+    "Book professional garage door service, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith services with Home Fix Solution.",
   path: "/"
 });
 
 const faqs = [
   {
     q: "What services does Home Fix Solution provide?",
-    a: "Home Fix Solution provides garage door services, air duct cleaning, and chimney cleaning for residential and commercial customers."
+    a: "Home Fix Solution provides garage door services, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith services for residential and commercial customers."
   },
   {
     q: "Do you offer booking online?",
@@ -49,7 +49,7 @@ export default function HomePage() {
               Premium Home Services, Booked With Confidence
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700 md:text-xl md:leading-9">
-              Professional garage door repair and installation, plus air duct cleaning and chimney cleaning for homes and businesses across 30+ states.
+              Professional garage door, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith services for homes and businesses across 30+ states.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a href={site.phoneHref} className="btn-primary">Call Now: <span>{site.phone}</span></a>
@@ -130,7 +130,7 @@ export default function HomePage() {
           <div>
             <h2 className="text-3xl font-black">Explore Services</h2>
             <p className="mt-3 leading-7 text-slate-600">
-              Browse the dedicated service pages for garage door, air duct cleaning, and chimney cleaning requests.
+              Browse the dedicated service pages for garage door, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith requests.
             </p>
             <Link href="/contact#book" className="btn-secondary mt-6">Book Service</Link>
           </div>
@@ -237,7 +237,7 @@ export default function HomePage() {
           <div>
             <h2 className="text-3xl font-black">Contact Home Fix Solution</h2>
             <p className="mt-3 leading-7 text-slate-600">
-              Ready for garage door service, air duct cleaning, or chimney cleaning? Call <a href={site.phoneHref} className="font-black text-brand-blue">{site.phone}</a> or submit the booking form.
+              Ready for garage door service, air duct cleaning, chimney cleaning, plumbing, electrician, or locksmith support? Call <a href={site.phoneHref} className="font-black text-brand-blue">{site.phone}</a> or submit the booking form.
             </p>
           </div>
           <BookingForm />

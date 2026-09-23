@@ -285,7 +285,7 @@ export async function sendBookingEmails(data: {
             ${customerContactCard}
           </div>
           <div style="${footerStyle}">
-            &copy; 2004 Home Fix Solution.<br>All rights reserved.
+            &copy; 2026 Home Fix Solution.<br>All rights reserved.
           </div>
         </div>
       </div>
@@ -359,7 +359,7 @@ export async function sendContactEmails(data: {
             ${customerContactCard}
           </div>
           <div style="${footerStyle}">
-            &copy; 2004 Home Fix Solution.<br>All rights reserved.
+            &copy; 2026 Home Fix Solution.<br>All rights reserved.
           </div>
         </div>
       </div>
@@ -490,7 +490,7 @@ export async function sendCareerEmails(
             ${customerContactCard}
           </div>
           <div style="${footerStyle}">
-            &copy; 2004 Home Fix Solution.<br>All rights reserved.
+            &copy; 2026 Home Fix Solution.<br>All rights reserved.
           </div>
         </div>
       </div>
@@ -573,7 +573,7 @@ export async function sendReviewEmails(data: {
             ${customerContactCard}
           </div>
           <div style="${footerStyle}">
-            &copy; 2004 Home Fix Solution.<br>All rights reserved.
+            &copy; 2026 Home Fix Solution.<br>All rights reserved.
           </div>
         </div>
       </div>

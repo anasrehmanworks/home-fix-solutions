@@ -12,7 +12,10 @@ const states = [
 const commissions = [
   { service: "Garage Door", rate: "40%" },
   { service: "Air Duct Cleaning", rate: "45%" },
-  { service: "Chimney Cleaning", rate: "45%" }
+  { service: "Chimney Cleaning", rate: "45%" },
+  { service: "Plumbing", rate: "Discussed after review" },
+  { service: "Electrician", rate: "Discussed after review" },
+  { service: "Locksmith", rate: "Discussed after review" }
 ];
 
 export function CareersForm() {
@@ -35,7 +38,7 @@ export function CareersForm() {
           <p className="step-pill w-fit">Step {step} of 2</p>
           <h2 className="mt-2 text-2xl font-black">Apply As A Technician</h2>
           <p className="mt-2 text-sm leading-6 text-slate-600">
-            Submit your technician application for garage door, air duct cleaning, and chimney service work.
+            Submit your technician application for garage door, air duct cleaning, chimney, plumbing, electrician, and locksmith service work.
           </p>
         </div>
       </div>
@@ -108,7 +111,7 @@ export function CareersForm() {
               {commissions.map((item) => (
                 <div key={item.service} className="rounded-md bg-white p-4 text-center shadow-sm">
                   <p className="text-sm font-black text-slate-600">{item.service}</p>
-                  <p className="mt-2 text-3xl font-black text-brand-blue">{item.rate}</p>
+                  <p className="mt-2 text-2xl font-black text-brand-blue">{item.rate}</p>
                 </div>
               ))}
             </div>

@@ -8,7 +8,7 @@ import { createMetadata, localBusinessSchema, site, statesServed } from "@/lib/s
 export const metadata = createMetadata({
   title: "Contact Home Fix Solution",
   description:
-    "Contact Home Fix Solution for garage door service, air duct cleaning, chimney cleaning, and booking requests.",
+    "Contact Home Fix Solution for garage door service, air duct cleaning, chimney cleaning, plumbing, electrician, locksmith, and booking requests.",
   path: "/contact",
 });
 
@@ -31,7 +31,8 @@ export default function ContactPage() {
 
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
             Call, message, or book service for garage door repair and
-            installation, air duct cleaning, or chimney cleaning.
+            installation, air duct cleaning, chimney cleaning, plumbing,
+            electrician, or locksmith requests.
           </p>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">

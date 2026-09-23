@@ -6,7 +6,7 @@ export const site = {
   phoneHref: "tel:+17579084102",
   url: "https://homefixsolution.org",
   description:
-    "Professional garage door services, air duct cleaning, and chimney cleaning for homeowners and businesses across 30+ states.",
+    "Professional garage door, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith services for homeowners and businesses across 30+ states.",
   primaryCity: "Virginia Beach",
   primaryState: "VA",
   logo: "/logo-horizontal.png",
@@ -50,7 +50,13 @@ export const statesServed = [
   "District of Columbia (Washington, DC)"
 ];
 
-export type ServiceCategory = "Garage Door" | "Air Duct Cleaning" | "Chimney Cleaning";
+export type ServiceCategory =
+  | "Garage Door"
+  | "Air Duct Cleaning"
+  | "Chimney Cleaning"
+  | "Plumbing"
+  | "Electrician"
+  | "Locksmith";
 
 export type ServicePage = {
   slug: string;
@@ -67,6 +73,9 @@ export type ServicePage = {
 const garageImage = "/site-images/garage-door-repair.jpg";
 const ductImage = "/site-images/air-duct-cleaning.jpg";
 const chimneyImage = "/site-images/chimney-cleaning.jpg";
+const plumbingImage = "/site-images/clear-service-options.jpg";
+const electricianImage = "/site-images/professional-diagnostics.jpg";
+const locksmithImage = "/site-images/fast-scheduling.jpg";
 
 const serviceImageOverrides: Record<string, string> = {
   "garage-door-repair": "/site-images/garage-door-repair.jpg",
@@ -92,7 +101,10 @@ const serviceImageOverrides: Record<string, string> = {
   "chimney-repair": "/site-images/chimney-repair.jpg",
   "chimney-cap-installation": "/site-images/chimney-cap-installation.jpg",
   "chimney-waterproofing": "/site-images/chimney-waterproofing.jpg",
-  "fireplace-cleaning": "/site-images/fireplace-cleaning.jpg"
+  "fireplace-cleaning": "/site-images/fireplace-cleaning.jpg",
+  "plumbing": plumbingImage,
+  "electrician": electricianImage,
+  "locksmith": locksmithImage
 };
 
 const garageSigns = [
@@ -114,6 +126,27 @@ const chimneySigns = [
   "Brick, mortar, flashing, caps, or crowns show cracking or moisture damage.",
   "You need an annual inspection before the burn season.",
   "Animals, leaves, nests, or debris may be blocking the flue."
+];
+
+const plumbingSigns = [
+  "Leaks, dripping fixtures, running toilets, or water stains keep coming back.",
+  "Sinks, tubs, showers, or drains are slow, clogged, or backing up.",
+  "Water pressure changes suddenly or plumbing fixtures no longer perform well.",
+  "You need practical help with fixture repair, replacement, or urgent plumbing concerns."
+];
+
+const electricianSigns = [
+  "Lights flicker, outlets stop working, or breakers trip repeatedly.",
+  "Switches, fixtures, panels, or wiring need professional troubleshooting.",
+  "You want help with fixture installation, safety concerns, or power issues.",
+  "A residential or commercial electrical problem needs timely attention."
+];
+
+const locksmithSigns = [
+  "You are locked out or a key is lost, broken, or no longer working smoothly.",
+  "Door locks stick, fail to latch, or need replacement after wear or damage.",
+  "You need rekeying, lock replacement, or access support for a home or business.",
+  "A lock or entry issue is affecting property access, security, or daily operations."
 ];
 
 const garageFaqs = [
@@ -152,6 +185,45 @@ const chimneyFaqs = [
     question: "Can chimney cleaning help with smoke issues?",
     answer:
       "Cleaning can remove soot and debris that restrict draft. If the smoke issue has another cause, the technician can document likely next steps."
+  }
+];
+
+const plumbingFaqs = [
+  {
+    question: "What plumbing problems can Home Fix Solution help with?",
+    answer:
+      "Plumbing requests may include leaks, clogs, fixture issues, running toilets, water pressure concerns, and other residential or commercial plumbing needs."
+  },
+  {
+    question: "Can I request urgent plumbing service?",
+    answer:
+      "Yes. Use the booking form or call Home Fix Solution to request the earliest available scheduling for urgent plumbing concerns in the service network."
+  }
+];
+
+const electricianFaqs = [
+  {
+    question: "What electrical services can I request?",
+    answer:
+      "Common requests include outlet issues, lighting problems, fixture support, breaker concerns, troubleshooting, and general residential or commercial electrical service needs."
+  },
+  {
+    question: "Should I book service if a breaker keeps tripping?",
+    answer:
+      "Yes. Repeated breaker trips can point to a larger electrical issue, so professional troubleshooting is recommended before the problem gets worse."
+  }
+];
+
+const locksmithFaqs = [
+  {
+    question: "Can Home Fix Solution help with lockouts?",
+    answer:
+      "Lockout requests can be submitted through the booking form or by phone, and scheduling depends on service availability in your area."
+  },
+  {
+    question: "Do you handle rekeying and lock replacement requests?",
+    answer:
+      "Yes. Customers can request support for rekeying, lock replacement, damaged locks, sticking locks, and other access-related needs."
   }
 ];
 
@@ -467,6 +539,45 @@ export const servicePages: ServicePage[] = [
     services: ["Firebox cleaning", "Ash and soot removal", "Damper review", "Seasonal preparation"],
     signs: chimneySigns,
     faqs: chimneyFaqs
+  },
+  {
+    slug: "plumbing",
+    title: "Plumbing Services",
+    category: "Plumbing",
+    summary:
+      "Professional plumbing support for leaks, clogs, fixtures, water pressure concerns, and urgent home or business requests.",
+    emphasis:
+      "Plumbing service focuses on identifying the cause of the problem, protecting the property, and restoring dependable daily use.",
+    image: plumbingImage,
+    services: ["Leak troubleshooting", "Drain and clog support", "Fixture repair and replacement", "Toilet and sink service"],
+    signs: plumbingSigns,
+    faqs: plumbingFaqs
+  },
+  {
+    slug: "electrician",
+    title: "Electrician Services",
+    category: "Electrician",
+    summary:
+      "Professional electrician service requests for outlets, lights, fixtures, breakers, troubleshooting, and urgent electrical concerns.",
+    emphasis:
+      "Electrical service should be handled with careful diagnosis, clear recommendations, and attention to safe, dependable performance.",
+    image: electricianImage,
+    services: ["Outlet troubleshooting", "Lighting support", "Breaker concerns", "Fixture service"],
+    signs: electricianSigns,
+    faqs: electricianFaqs
+  },
+  {
+    slug: "locksmith",
+    title: "Locksmith Services",
+    category: "Locksmith",
+    summary:
+      "Locksmith support for lockouts, rekeying, lock replacement, damaged locks, keys, and home or business access needs.",
+    emphasis:
+      "Locksmith service helps restore access, improve security, and resolve lock problems with practical next steps.",
+    image: locksmithImage,
+    services: ["Lockout requests", "Rekeying support", "Lock replacement", "Damaged lock service"],
+    signs: locksmithSigns,
+    faqs: locksmithFaqs
   }
 ].map((service) => ({
   ...service,
@@ -564,6 +675,30 @@ export const primaryServices = [
     description:
       "Cleaning, inspections, repair support, cap installation, waterproofing, and fireplace preparation.",
     featured: false
+  },
+  {
+    title: "Plumbing",
+    slug: "plumbing",
+    image: plumbingImage,
+    description:
+      "Leaks, clogs, fixture service, water pressure concerns, toilets, sinks, and urgent plumbing requests.",
+    featured: false
+  },
+  {
+    title: "Electrician",
+    slug: "electrician",
+    image: electricianImage,
+    description:
+      "Outlet issues, lighting support, breaker concerns, fixture service, troubleshooting, and electrical requests.",
+    featured: false
+  },
+  {
+    title: "Locksmith",
+    slug: "locksmith",
+    image: locksmithImage,
+    description:
+      "Lockouts, rekeying, lock replacement, damaged lock support, and home or business access service.",
+    featured: false
   }
 ];
 
@@ -575,7 +710,14 @@ export function getService(slug: string) {
   return servicePages.find((service) => service.slug === slug);
 }
 
-export const serviceCategories: ServiceCategory[] = ["Garage Door", "Air Duct Cleaning", "Chimney Cleaning"];
+export const serviceCategories: ServiceCategory[] = [
+  "Garage Door",
+  "Air Duct Cleaning",
+  "Chimney Cleaning",
+  "Plumbing",
+  "Electrician",
+  "Locksmith"
+];
 
 export const offers = [
   {
@@ -679,6 +821,13 @@ export function localBusinessSchema(path = "/") {
       addressRegion: site.primaryState,
       addressCountry: "US"
     },
-    serviceType: ["Garage Door Services", "Air Duct Cleaning", "Chimney Cleaning"]
+    serviceType: [
+      "Garage Door Services",
+      "Air Duct Cleaning",
+      "Chimney Cleaning",
+      "Plumbing Services",
+      "Electrician Services",
+      "Locksmith Services"
+    ]
   };
 }
