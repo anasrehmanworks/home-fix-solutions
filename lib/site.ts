@@ -6,7 +6,7 @@ export const site = {
   phoneHref: "tel:+17579084102",
   url: "https://homefixsolution.org",
   description:
-    "Professional garage door, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith services for homeowners and businesses across 30+ states.",
+    "Professional garage door, air duct cleaning, chimney cleaning, plumbing, electrician, locksmith, roofing, and HVAC services for homeowners and businesses across 30+ states.",
   primaryCity: "Virginia Beach",
   primaryState: "VA",
   logo: "/logo-horizontal.png",
@@ -56,7 +56,9 @@ export type ServiceCategory =
   | "Chimney Cleaning"
   | "Plumbing"
   | "Electrician"
-  | "Locksmith";
+  | "Locksmith"
+  | "Roofing"
+  | "HVAC";
 
 export type ServicePage = {
   slug: string;
@@ -68,6 +70,7 @@ export type ServicePage = {
   services: string[];
   signs: string[];
   faqs: { question: string; answer: string }[];
+  details?: string[];
 };
 
 const garageImage = "/site-images/garage-door-repair.jpg";
@@ -76,6 +79,8 @@ const chimneyImage = "/site-images/chimney-cleaning.jpg";
 const plumbingImage = "/site-images/clear-service-options.jpg";
 const electricianImage = "/site-images/professional-diagnostics.jpg";
 const locksmithImage = "/site-images/fast-scheduling.jpg";
+const roofingImage = "/site-images/hero-background.jpg";
+const hvacImage = "/site-images/hvac-duct-cleaning.jpg";
 
 const serviceImageOverrides: Record<string, string> = {
   "garage-door-repair": "/site-images/garage-door-repair.jpg",
@@ -104,7 +109,9 @@ const serviceImageOverrides: Record<string, string> = {
   "fireplace-cleaning": "/site-images/fireplace-cleaning.jpg",
   "plumbing": plumbingImage,
   "electrician": electricianImage,
-  "locksmith": locksmithImage
+  "locksmith": locksmithImage,
+  "roofing": roofingImage,
+  "hvac": hvacImage
 };
 
 const garageSigns = [
@@ -147,6 +154,20 @@ const locksmithSigns = [
   "Door locks stick, fail to latch, or need replacement after wear or damage.",
   "You need rekeying, lock replacement, or access support for a home or business.",
   "A lock or entry issue is affecting property access, security, or daily operations."
+];
+
+const roofingSigns = [
+  "Shingles, flashing, gutters, or roof edges show visible wear or storm damage.",
+  "Water stains, damp ceilings, or active leaks appear inside the property.",
+  "You need a professional inspection before deciding on repair or replacement.",
+  "The roof is aging, has recurring issues, or needs attention after severe weather."
+];
+
+const hvacSigns = [
+  "Rooms are not heating or cooling evenly, or airflow feels weak.",
+  "The system cycles frequently, makes unfamiliar noises, or does not keep up with demand.",
+  "Heating or air conditioning performance has changed since the last season.",
+  "You need preventive maintenance or practical troubleshooting for a residential HVAC system."
 ];
 
 const garageFaqs = [
@@ -224,6 +245,32 @@ const locksmithFaqs = [
     question: "Do you handle rekeying and lock replacement requests?",
     answer:
       "Yes. Customers can request support for rekeying, lock replacement, damaged locks, sticking locks, and other access-related needs."
+  }
+];
+
+const roofingFaqs = [
+  {
+    question: "What roofing services can I request?",
+    answer:
+      "Roofing requests may include inspections, repair planning, roof leak assistance, replacement discussions, and residential roofing concerns."
+  },
+  {
+    question: "Can I request help for an active roof leak?",
+    answer:
+      "Yes. Call or use the booking form to request the earliest available roofing appointment in the service network."
+  }
+];
+
+const hvacFaqs = [
+  {
+    question: "What HVAC services can I request?",
+    answer:
+      "HVAC requests may include heating and cooling troubleshooting, repair planning, maintenance, air conditioning concerns, and residential system support."
+  },
+  {
+    question: "When should I schedule HVAC maintenance?",
+    answer:
+      "Many homeowners schedule maintenance before heavy heating or cooling seasons, or sooner when airflow, comfort, noise, or system performance changes."
   }
 ];
 
@@ -578,6 +625,42 @@ export const servicePages: ServicePage[] = [
     services: ["Lockout requests", "Rekeying support", "Lock replacement", "Damaged lock service"],
     signs: locksmithSigns,
     faqs: locksmithFaqs
+  },
+  {
+    slug: "roofing",
+    title: "Roofing Services",
+    category: "Roofing",
+    summary:
+      "Professional residential roofing support for inspections, repair planning, replacement discussions, roof leaks, and visible storm or weather damage.",
+    emphasis:
+      "Roofing service starts with a clear look at the roof condition so homeowners can make an informed next decision for the property.",
+    image: roofingImage,
+    services: ["Roof inspections", "Roof repair planning", "Roof replacement discussions", "Roof leak assistance"],
+    signs: roofingSigns,
+    faqs: roofingFaqs,
+    details: [
+      "A healthy roof protects the rest of the home from weather, moisture, and ongoing wear. Home Fix Solution helps homeowners request roofing support when shingles, flashing, roof edges, or interior ceilings show signs that deserve a closer look. The first goal is to understand the condition of the roof and the likely source of the concern before recommending a path forward.",
+      "Roofing needs can range from a focused inspection or repair conversation to planning for broader replacement work. A service visit can help document visible damage, discuss roof leak concerns, and review the practical factors that affect repair or replacement decisions, including the age of the roof, affected areas, materials, and the property's everyday needs.",
+      "Home Fix Solution serves customers through its established network across 30+ states. Availability depends on the property location and schedule, so use the booking form or call to share the address, preferred date, and the best available appointment slot for your roofing request."
+    ]
+  },
+  {
+    slug: "hvac",
+    title: "HVAC Services",
+    category: "HVAC",
+    summary:
+      "Residential HVAC support for heating and air conditioning concerns, maintenance requests, repair planning, and heating and cooling troubleshooting.",
+    emphasis:
+      "HVAC service focuses on restoring comfortable, dependable heating and cooling with clear information about the condition of the system.",
+    image: hvacImage,
+    services: ["HVAC repair planning", "Heating service", "Air conditioning service", "Seasonal HVAC maintenance"],
+    signs: hvacSigns,
+    faqs: hvacFaqs,
+    details: [
+      "Heating and cooling systems work hardest when the weather is at its most demanding. Home Fix Solution helps homeowners request HVAC support when comfort changes, airflow weakens, the system makes unfamiliar noises, or a unit is no longer keeping up with the home's heating or air conditioning needs.",
+      "An HVAC appointment begins with the symptoms you have noticed and a practical review of the system's operation. That can support repair planning, seasonal maintenance, heating service, air conditioning service, and troubleshooting for uneven temperatures or performance concerns. Clear observations help identify the next appropriate service path without overpromising the scope of work.",
+      "Home Fix Solution serves customers through its established network across 30+ states. Use the booking form or call to provide the property address, preferred date, and an available appointment slot so the request can be matched to local scheduling availability."
+    ]
   }
 ].map((service) => ({
   ...service,
@@ -699,6 +782,22 @@ export const primaryServices = [
     description:
       "Lockouts, rekeying, lock replacement, damaged lock support, and home or business access service.",
     featured: false
+  },
+  {
+    title: "Roofing",
+    slug: "roofing",
+    image: roofingImage,
+    description:
+      "Inspections, repair planning, replacement discussions, roof leak assistance, and residential roofing support.",
+    featured: false
+  },
+  {
+    title: "HVAC",
+    slug: "hvac",
+    image: hvacImage,
+    description:
+      "Heating and air conditioning support, HVAC maintenance, repair planning, and comfort troubleshooting.",
+    featured: false
   }
 ];
 
@@ -716,7 +815,9 @@ export const serviceCategories: ServiceCategory[] = [
   "Chimney Cleaning",
   "Plumbing",
   "Electrician",
-  "Locksmith"
+  "Locksmith",
+  "Roofing",
+  "HVAC"
 ];
 
 export const offers = [
@@ -827,7 +928,9 @@ export function localBusinessSchema(path = "/") {
       "Chimney Cleaning",
       "Plumbing Services",
       "Electrician Services",
-      "Locksmith Services"
+      "Locksmith Services",
+      "Roofing Services",
+      "HVAC Services"
     ]
   };
 }

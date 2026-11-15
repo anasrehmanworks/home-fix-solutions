@@ -5,7 +5,7 @@ import { createMetadata, localBusinessSchema } from "@/lib/site";
 
 export const metadata = createMetadata({
   title: "Leave a Review",
-  description: "Leave a review for Home Fix Solution garage door, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith services.",
+  description: "Leave a review for Home Fix Solution garage door, air duct cleaning, chimney cleaning, plumbing, electrician, locksmith, roofing, and HVAC services.",
   path: "/leave-a-review"
 });
 

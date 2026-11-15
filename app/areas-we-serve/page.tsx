@@ -7,7 +7,7 @@ import { createMetadata, localBusinessSchema, site, statesServed } from "@/lib/s
 export const metadata = createMetadata({
   title: "Areas We Serve",
   description:
-    "Home Fix Solution proudly serves garage door, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith customers across 30+ states.",
+    "Home Fix Solution proudly serves garage door, air duct cleaning, chimney cleaning, plumbing, electrician, locksmith, roofing, and HVAC customers across 30+ states.",
   path: "/areas-we-serve"
 });
 
@@ -35,7 +35,7 @@ export default function AreasWeServePage() {
           <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
             Home Fix Solution proudly serves customers across 30+ states for
             garage door services, air duct cleaning, chimney cleaning,
-            plumbing, electrician, and locksmith requests.
+            plumbing, electrician, locksmith, roofing, and HVAC requests.
             Explore our current service footprint below and access available
             local service pages where applicable.
           </p>

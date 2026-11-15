@@ -26,8 +26,8 @@ export function Footer() {
 
           <p className="max-w-sm text-sm leading-6 text-slate-300">
             Professional service across 30+ states for garage doors, air duct
-            cleaning, chimney care, plumbing, electrical, and locksmith
-            requests.
+            cleaning, chimney care, plumbing, electrical, locksmith, roofing,
+            and HVAC requests.
           </p>
 
           {/* Phone */}
@@ -98,6 +98,18 @@ export function Footer() {
             <li>
               <Link href="/services/locksmith" className="hover:text-white">
                 Locksmith
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/services/roofing" className="hover:text-white">
+                Roofing
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/services/hvac" className="hover:text-white">
+                HVAC
               </Link>
             </li>
           </ul>

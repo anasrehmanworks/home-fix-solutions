@@ -15,7 +15,9 @@ const commissions = [
   { service: "Chimney Cleaning", rate: "45%" },
   { service: "Plumbing", rate: "Discussed after review" },
   { service: "Electrician", rate: "Discussed after review" },
-  { service: "Locksmith", rate: "Discussed after review" }
+  { service: "Locksmith", rate: "Discussed after review" },
+  { service: "Roofing", rate: "Discussed after review" },
+  { service: "HVAC", rate: "Discussed after review" }
 ];
 
 export function CareersForm() {
@@ -38,7 +40,7 @@ export function CareersForm() {
           <p className="step-pill w-fit">Step {step} of 2</p>
           <h2 className="mt-2 text-2xl font-black">Apply As A Technician</h2>
           <p className="mt-2 text-sm leading-6 text-slate-600">
-            Submit your technician application for garage door, air duct cleaning, chimney, plumbing, electrician, and locksmith service work.
+            Submit your technician application for garage door, air duct cleaning, chimney, plumbing, electrician, locksmith, roofing, and HVAC service work.
           </p>
         </div>
       </div>

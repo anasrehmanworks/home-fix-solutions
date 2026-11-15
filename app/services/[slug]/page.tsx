@@ -46,7 +46,7 @@ function longServiceCopy(serviceTitle: string, category: string) {
 
     `${category} service also has a strong maintenance component. Many expensive problems begin as small signs: louder movement, slower operation, uneven lifting, dusty vents, weak airflow, smoky fireplace use, water staining, or visible exterior wear. Routine inspection and tune-up work can catch those signals early. For homeowners, that means fewer interruptions and a more comfortable daily routine. For businesses, it can mean better uptime, safer access points, and fewer service surprises during busy hours.`,
 
-    `Home Fix Solution proudly serves customers across 30+ states while keeping the website focused on state-level service areas rather than individual city pages. That structure makes it easier to maintain accurate coverage information and keeps visitors focused on choosing the right service. To request ${serviceTitle.toLowerCase()}, use the booking form, call the highlighted phone number, and include the property address, preferred date, appointment slot, and a short description of the issue. The more detail you provide, the easier it is to prepare for the appointment and match the request to the right service path.`
+    `Home Fix Solution proudly serves customers across 30+ states while keeping the website focused on state-level service areas rather than individual city pages. That structure makes it easier to maintain accurate coverage information and keeps visitors focused on choosing the right service. To request ${serviceTitle.toLowerCase()}, use the booking form or call the highlighted phone number with the property address, preferred date, and an available appointment slot. This helps prepare the request and match it to the right service path.`
   ];
 }
 
@@ -60,7 +60,7 @@ export default async function ServicePage({ params }: Props) {
     .filter((item) => item.slug !== service.slug)
     .slice(0, 8);
 
-  const paragraphs = longServiceCopy(service.title, service.category);
+  const paragraphs = service.details ?? longServiceCopy(service.title, service.category);
 
   return (
     <>

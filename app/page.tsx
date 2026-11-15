@@ -9,14 +9,14 @@ import { beforeAfterGallery, createMetadata, customerReviews, getServicesByCateg
 export const metadata = createMetadata({
   title: "Home Fix Solution | Home Services Across 30+ States",
   description:
-    "Book professional garage door service, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith services with Home Fix Solution.",
+    "Book professional garage door, air duct cleaning, chimney cleaning, plumbing, electrician, locksmith, roofing, and HVAC services with Home Fix Solution.",
   path: "/"
 });
 
 const faqs = [
   {
     q: "What services does Home Fix Solution provide?",
-    a: "Home Fix Solution provides garage door services, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith services for residential and commercial customers."
+    a: "Home Fix Solution provides garage door services, air duct cleaning, chimney cleaning, plumbing, electrician, locksmith, roofing, and HVAC services for residential and commercial customers."
   },
   {
     q: "Do you offer booking online?",
@@ -49,7 +49,7 @@ export default function HomePage() {
               Premium Home Services, Booked With Confidence
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700 md:text-xl md:leading-9">
-              Professional garage door, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith services for homes and businesses across 30+ states.
+              Garage door, duct and chimney cleaning, plumbing, electrical, roofing, HVAC, and locksmith service for homes and businesses across 30+ states.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a href={site.phoneHref} className="btn-primary">Call Now: <span>{site.phone}</span></a>
@@ -75,7 +75,7 @@ export default function HomePage() {
               Choose the service category that fits your home or business request.
             </p>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {primaryServices.map((service) => (
               <Link
                 key={service.title}
@@ -85,7 +85,7 @@ export default function HomePage() {
                 }`}
               >
                 <div className="relative -mx-6 -mt-6 mb-5 aspect-[4/3] overflow-hidden rounded-t-md">
-                  <Image src={service.image} alt={`${service.title} service`} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 768px) 33vw, 100vw" />
+                  <Image src={service.image} alt={`${service.title} service`} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw" />
                 </div>
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-md bg-brand-blue text-white">
                   <Wrench size={24} />
@@ -130,15 +130,15 @@ export default function HomePage() {
           <div>
             <h2 className="text-3xl font-black">Explore Services</h2>
             <p className="mt-3 leading-7 text-slate-600">
-              Browse the dedicated service pages for garage door, air duct cleaning, chimney cleaning, plumbing, electrician, and locksmith requests.
+              Browse dedicated pages for garage door, air duct cleaning, chimney cleaning, plumbing, electrical, locksmith, roofing, and HVAC requests.
             </p>
             <Link href="/contact#book" className="btn-secondary mt-6">Book Service</Link>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {serviceCategories.map((category) => (
               <div key={category} className="overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm">
                 <div className="relative aspect-[4/3]">
-                  <Image src={primaryServices.find((item) => item.title === category)?.image ?? site.heroImage} alt={`${category} services`} fill className="object-cover" sizes="(min-width: 768px) 33vw, 100vw" />
+                  <Image src={primaryServices.find((item) => item.title === category)?.image ?? site.heroImage} alt={`${category} services`} fill className="object-cover" sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw" />
                 </div>
                 <div className="p-5">
                 <h3 className="text-xl font-black">{category}</h3>
@@ -237,7 +237,7 @@ export default function HomePage() {
           <div>
             <h2 className="text-3xl font-black">Contact Home Fix Solution</h2>
             <p className="mt-3 leading-7 text-slate-600">
-              Ready for garage door service, air duct cleaning, chimney cleaning, plumbing, electrician, or locksmith support? Call <a href={site.phoneHref} className="font-black text-brand-blue">{site.phone}</a> or submit the booking form.
+              Ready for home service support? Call <a href={site.phoneHref} className="font-black text-brand-blue">{site.phone}</a> or submit the booking form for garage door, cleaning, plumbing, electrical, locksmith, roofing, or HVAC service.
             </p>
           </div>
           <BookingForm />
