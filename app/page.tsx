@@ -1,10 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2, Clock, ShieldCheck, Star } from "lucide-react";
+import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import { BookingForm } from "@/components/BookingForm";
+import { CountUp } from "@/components/CountUp";
 import { JsonLd } from "@/components/JsonLd";
+import { Marquee } from "@/components/Marquee";
 import { OffersSection } from "@/components/OffersSection";
-import { ServiceCards } from "@/components/ServiceCards";
+import { Reveal } from "@/components/Reveal";
+import { ServiceRack } from "@/components/ServiceRack";
+import type { RackItem } from "@/components/ServiceRack";
+import { TransitionLink } from "@/components/ServiceTransition";
+import { sceneForSlug } from "@/lib/scenes";
+import { Tilt } from "@/components/Tilt";
 import { beforeAfterGallery, createMetadata, customerReviews, getService, getServicesByCategory, localBusinessSchema, primaryServices, serviceCategories, site, statesServed } from "@/lib/site";
 
 export const metadata = createMetadata({
@@ -55,6 +63,35 @@ const homeServices = [
   }
 ];
 
+const rackItems: RackItem[] = homeServices.map((item) => {
+  const svc = getService(item.slug);
+  const chips =
+    item.slug === "appliance-repair"
+      ? ["Refrigerator", "Washer", "Dryer", "Dishwasher", "Oven or range"]
+      : item.slug === "dryer-vent-cleaning"
+        ? (svc?.services.slice(0, 4) ?? [])
+        : getServicesByCategory(item.category as never).slice(0, 4).map((s2) => s2.title);
+  return {
+    title: item.title,
+    href: `/services/${item.slug}`,
+    image: item.image,
+    blurb: svc?.summary ?? item.description,
+    chips,
+    scene: sceneForSlug(item.slug),
+    category: item.category,
+    serviceTitle: item.title
+  };
+});
+
+const heroStats: Array<{ value: number; suffix: string; label: string }> = [
+  { value: 30, suffix: "+", label: "States Served" },
+  { value: 10, suffix: "", label: "Core Services" },
+  { value: 6, suffix: "", label: "Current Coupons" },
+  { value: 8, suffix: "", label: "Verified Reviews" }
+];
+
+const heroWords = "Premium Home Services, Booked With Confidence".split(" ");
+
 export default function HomePage() {
   return (
     <>
@@ -76,8 +113,13 @@ export default function HomePage() {
             <p className="eyebrow rounded-full border border-brand-sky/40 bg-brand-blue/25 px-4 py-2 text-brand-ice backdrop-blur">
               Home Service Specialists
             </p>
-            <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.04] md:text-7xl">
-              Premium Home Services, Booked With Confidence
+            <h1 className="mt-6 font-display text-5xl font-black leading-[1.04] tracking-tight md:text-7xl" aria-label="Premium Home Services, Booked With Confidence">
+              {heroWords.map((word, i) => (
+                <span key={i} className="w" aria-hidden="true">
+                  <span style={{ animationDelay: `${0.08 + i * 0.07}s` }}>{word}</span>
+                  {i < heroWords.length - 1 ? "\u00A0" : ""}
+                </span>
+              ))}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200 md:text-xl md:leading-9">
               Garage door, duct and chimney cleaning, plumbing, electrical, roofing, HVAC, and locksmith service for homes and businesses across 30+ states.
@@ -93,24 +135,38 @@ export default function HomePage() {
                 </span>
               ))}
             </div>
+            <div className="mt-10 flex max-w-[560px] gap-0 border-t border-white/20 pt-[22px]">
+              {heroStats.map((stat, i) => (
+                <div key={stat.label} className={`flex-1 ${i > 0 ? "border-l border-white/15 pl-5" : ""}`}>
+                  <b className="block font-heading text-[1.55rem] font-black leading-none text-white">
+                    <CountUp to={stat.value} suffix={stat.suffix} />
+                  </b>
+                  <span className="mt-1.5 block text-[0.7rem] font-bold uppercase tracking-[0.08em] text-slate-400">{stat.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
           <div id="book" className="rise-in w-full text-ink">
-            <BookingForm compact />
+            <BookingForm compact tilt />
           </div>
         </div>
       </section>
 
-      {/* SERVICES — the approved 10-service list */}
+      <Marquee />
+
+      {/* SERVICES — the interactive rack with the approved 10-service list */}
       <section className="bg-white py-20">
         <div className="section-shell">
           <div className="mb-10 max-w-3xl">
             <p className="eyebrow">What We Do</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold">Service Highlights</h2>
+            <h2 className="mt-3 font-display text-4xl font-black tracking-tight">Our Services</h2>
             <p className="mt-3 leading-7 text-slate-600">
-              Choose the service category that fits your home or business request.
+              Browse the rack — pick a service to see what it covers, book it pre-filled, or open its full page.
             </p>
           </div>
-          <ServiceCards items={homeServices} />
+          <Reveal>
+            <ServiceRack items={rackItems} />
+          </Reveal>
         </div>
       </section>
 
@@ -127,16 +183,10 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-3">
-            {beforeAfterGallery.map((item) => (
-              <article key={item.title} className="dark-card group overflow-hidden hover:-translate-y-1">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image src={item.image} alt={`${item.title} before and after`} fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(min-width: 768px) 33vw, 100vw" />
-                </div>
-                <div className="p-5">
-                  <h3 className="text-xl font-black">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-300">{item.description}</p>
-                </div>
-              </article>
+            {beforeAfterGallery.map((item, i) => (
+              <Reveal key={item.title} delay={i * 110}>
+                <BeforeAfterSlider image={item.image} title={item.title} description={item.description} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -163,9 +213,9 @@ export default function HomePage() {
                   <h3 className="text-xl font-black">{category}</h3>
                   <div className="mt-4 grid gap-2">
                     {getServicesByCategory(category).slice(0, 6).map((service) => (
-                      <Link key={service.slug} href={`/services/${service.slug}`} className="rounded-lg px-2 py-2 text-sm font-bold leading-5 text-ink transition hover:bg-brand-pale hover:text-brand-blue">
+                      <TransitionLink key={service.slug} href={`/services/${service.slug}`} className="block rounded-lg px-2 py-2 text-sm font-bold leading-5 text-ink transition hover:bg-brand-pale hover:text-brand-blue">
                         <span className="break-words">{service.title}</span>
-                      </Link>
+                      </TransitionLink>
                     ))}
                   </div>
                 </div>
@@ -179,17 +229,26 @@ export default function HomePage() {
       <section className="bg-white py-20">
         <div className="section-shell grid gap-6 lg:grid-cols-3">
           {[
-            ["Professional Diagnostics", "We identify the real issue before recommending repair or replacement.", ShieldCheck],
-            ["Fast Scheduling", "Urgent service problems are handled as quickly as scheduling allows.", Clock],
-            ["Clear Service Options", "Customers get practical explanations and a straightforward service path.", CheckCircle2]
-          ].map(([title, text, Icon]) => (
-            <div key={String(title)} className="rounded-2xl border border-slate-200 p-7 transition duration-300 hover:-translate-y-1 hover:shadow-crisp">
-              <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-pale text-brand-blue">
-                <Icon size={26} />
-              </span>
-              <h3 className="mt-5 text-xl font-black">{title as string}</h3>
-              <p className="mt-3 leading-7 text-slate-600">{text as string}</p>
-            </div>
+            { title: "Professional Diagnostics", text: "We identify the real issue before recommending repair or replacement.", Icon: ShieldCheck, img: "/site-images/professional-diagnostics.jpg" },
+            { title: "Fast Scheduling", text: "Urgent service problems are handled as quickly as scheduling allows.", Icon: Clock, img: "/site-images/fast-scheduling.jpg" },
+            { title: "Clear Service Options", text: "Customers get practical explanations and a straightforward service path.", Icon: CheckCircle2, img: "/site-images/clear-service-options.jpg" }
+          ].map(({ title, text, Icon, img }, i) => (
+            <Reveal key={title} delay={i * 110}>
+              <Tilt className="h-full">
+                <div className="group h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lift">
+                  <div className="relative h-44 overflow-hidden">
+                    <Image src={img} alt={title} fill className="object-cover transition duration-700 group-hover:scale-[1.07]" sizes="(min-width: 1024px) 33vw, 100vw" />
+                  </div>
+                  <div className="p-6">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-pale text-brand-blue">
+                      <Icon size={24} />
+                    </span>
+                    <h3 className="mt-4 text-xl font-black">{title}</h3>
+                    <p className="mt-2.5 leading-7 text-slate-600">{text}</p>
+                  </div>
+                </div>
+              </Tilt>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -217,8 +276,8 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link href="/leave-a-review" className="btn-ghost-light">
-              View More Reviews
+            <Link href="/reviews" className="btn-ghost-light">
+              Read All Reviews
             </Link>
           </div>
         </div>
@@ -251,8 +310,11 @@ export default function HomePage() {
           </div>
           <div className="grid content-start gap-4">
             {faqs.map((faq) => (
-              <details key={faq.q} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                <summary className="cursor-pointer text-lg font-black">{faq.q}</summary>
+              <details key={faq.q} className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <summary className="flex cursor-pointer list-none items-center gap-3.5 text-lg font-black [&::-webkit-details-marker]:hidden">
+                  <span className="flex-1">{faq.q}</span>
+                  <span className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-lg font-black text-brand-blue transition-transform duration-300 group-open:rotate-45">+</span>
+                </summary>
                 <p className="mt-3 leading-7 text-slate-600">{faq.a}</p>
               </details>
             ))}
@@ -260,9 +322,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CONTACT / BOOK */}
-      <section className="bg-night py-20 text-white">
-        <div className="section-shell grid gap-10 lg:grid-cols-2">
+      {/* CONTACT / BOOK — CTA band */}
+      <section className="bg-white py-20">
+        <div className="section-shell">
+          <div className="relative overflow-hidden rounded-[26px] bg-night px-6 py-12 text-white sm:px-10 lg:px-[52px] lg:py-14">
+            <Image src="/site-images/fast-scheduling.jpg" alt="" fill className="object-cover opacity-[0.14]" sizes="100vw" />
+            <div className="relative grid gap-10 lg:grid-cols-2">
           <div>
             <p className="eyebrow text-brand-ice">Get Started</p>
             <h2 className="mt-3 font-display text-4xl font-semibold">Contact Home Fix Solution</h2>
@@ -277,8 +342,10 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div className="text-ink">
-            <BookingForm />
+              <div className="text-ink">
+                <BookingForm />
+              </div>
+            </div>
           </div>
         </div>
       </section>

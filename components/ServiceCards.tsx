@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { ArrowRight, Wrench } from "lucide-react";
-import { familyForCategory, useServiceTransition } from "@/components/ServiceTransition";
+import { useServiceTransition } from "@/components/ServiceTransition";
+import { sceneForSlug } from "@/lib/scenes";
 
 export type ServiceCardItem = {
   title: string;
@@ -21,7 +22,7 @@ export function ServiceCards({ items, dark = false }: { items: ServiceCardItem[]
         <button
           key={service.slug}
           type="button"
-          onClick={() => go(`/services/${service.slug}`, familyForCategory(service.category))}
+          onClick={() => go(`/services/${service.slug}`, sceneForSlug(service.slug))}
           className={`group overflow-hidden rounded-2xl border text-left shadow-sm transition duration-300 hover:-translate-y-1 ${
             dark
               ? "border-white/10 bg-smoke text-white hover:shadow-glow"

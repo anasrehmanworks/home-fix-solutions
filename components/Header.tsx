@@ -1,31 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getServicesByCategory, serviceCategories, site } from "@/lib/site";
+import { TransitionLink } from "@/components/ServiceTransition";
 
 const nav = [
+  { href: "/coupons", label: "Coupons" },
+  { href: "/results", label: "Results" },
+  { href: "/reviews", label: "Reviews" },
   { href: "/areas-we-serve", label: "Areas We Serve" },
+  { href: "/faq", label: "FAQ" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" }
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-night/95 shadow-lift backdrop-blur">
-      <div className="section-shell flex min-h-20 items-center justify-between gap-5">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-night/95 shadow-lift backdrop-blur transition-all">
+      <div className={`section-shell flex items-center justify-between gap-5 transition-all duration-300 ${scrolled ? "min-h-16" : "min-h-20"}`}>
         <Link href="/" className="flex items-center gap-3" aria-label="Home Fix Solution home">
-          <Image
-            src="/logo-transparent.png"
+          <img
+            src="/logo-transparent.svg"
             alt="Home Fix Solution"
-            width={719}
-            height={791}
-            priority
-            className="h-14 w-auto object-contain"
+            className={`w-auto object-contain transition-all duration-300 ${scrolled ? "h-11" : "h-14"}`}
           />
           <span className="hidden flex-col leading-tight min-[420px]:flex">
             <span className="font-heading text-lg font-black tracking-tight text-white">
@@ -37,7 +46,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 text-[15px] font-bold text-slate-200 lg:flex">
+        <nav className="hidden items-center gap-4 text-[13.5px] font-bold text-slate-200 xl:flex min-[1400px]:gap-6">
           <Link href="/" className="rounded-md px-1 py-2 transition hover:text-white">
             Home
           </Link>
@@ -48,22 +57,22 @@ export function Header() {
             <div className="invisible absolute left-0 top-full z-50 w-80 translate-y-2 rounded-xl border border-white/10 bg-smoke p-3 opacity-0 shadow-lift transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
               {serviceCategories.map((category) => (
                 <div key={category} className="group/category relative">
-                  <Link
+                  <TransitionLink
                     href={`/services/${getServicesByCategory(category)[0].slug}`}
                     className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-black text-white transition hover:bg-white/10 group-hover/category:bg-white/10"
                   >
                     <span className="whitespace-nowrap">{category}</span>
                     <ChevronDown size={16} className="-rotate-90 text-brand-ice" />
-                  </Link>
+                  </TransitionLink>
                   <div className="invisible absolute left-full top-0 grid w-[380px] gap-1 rounded-xl border border-white/10 bg-smoke p-3 opacity-0 shadow-lift transition before:absolute before:-left-4 before:top-0 before:h-full before:w-4 before:content-[''] group-hover/category:visible group-hover/category:translate-x-3 group-hover/category:opacity-100">
                     {getServicesByCategory(category).map((service) => (
-                      <Link
+                      <TransitionLink
                         key={service.slug}
                         href={`/services/${service.slug}`}
                         className="rounded-lg px-3 py-2 text-sm font-bold text-slate-200 transition hover:bg-white/10 hover:text-white"
                       >
                         <span className="whitespace-nowrap">{service.title}</span>
-                      </Link>
+                      </TransitionLink>
                     ))}
                   </div>
                 </div>
@@ -89,7 +98,7 @@ export function Header() {
 
         <button
           type="button"
-          className="grid h-11 w-11 place-items-center rounded-lg border border-white/20 text-white lg:hidden"
+          className="grid h-11 w-11 place-items-center rounded-lg border border-white/20 text-white xl:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
           suppressHydrationWarning
@@ -99,7 +108,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-night lg:hidden">
+        <div className="border-t border-white/10 bg-night xl:hidden">
           <nav className="section-shell grid gap-1 py-4 text-sm font-bold text-slate-200">
             <Link href="/" className="rounded-lg px-2 py-3 hover:bg-white/10" onClick={() => setOpen(false)}>
               Home

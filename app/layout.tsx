@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Fraunces, Manrope, Outfit } from "next/font/google";
+import { Archivo, Manrope } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { StickyPhone } from "@/components/StickyPhone";
@@ -15,17 +15,11 @@ const manrope = Manrope({
   variable: "--font-manrope"
 });
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-heading"
-});
-
-const fraunces = Fraunces({
+const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-display",
-  weight: ["500", "600", "700"]
+  weight: ["600", "700", "800", "900"]
 });
 
 export const metadata: Metadata = {
@@ -62,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       </head>
       <body
-        className={`${manrope.variable} ${outfit.variable} ${fraunces.variable}`}
+        className={`${manrope.variable} ${archivo.variable}`}
         suppressHydrationWarning
       >
         <noscript>

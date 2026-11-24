@@ -1,12 +1,111 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useRef, useState } from "react";
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 
-export type ServiceFamily = "garage" | "duct" | "chimney" | "generic";
+import { sceneForHref } from "@/lib/scenes";
+import type { SceneKey } from "@/lib/scenes";
+export { sceneForSlug, sceneForHref } from "@/lib/scenes";
+export type { SceneKey } from "@/lib/scenes";
 
-const TransitionContext = createContext<{ go: (href: string, family?: ServiceFamily) => void }>({
+function Scene({ scene }: { scene: SceneKey }) {
+  switch (scene) {
+    case "garage":
+      return (
+        <div className="scene sc-garage">
+          <div className="panel" /><div className="panel" /><div className="panel" /><div className="panel" /><div className="panel" />
+          <div className="glowline" />
+        </div>
+      );
+    case "duct":
+    case "dryer":
+      return (
+        <div className="scene">
+          <div className="duct-frame" />
+          {[30, 50, 70].map((top, i) => (
+            <div key={top} className="stream" style={{ top: `${top}%`, animationDelay: `${i * 0.18}s` }} />
+          ))}
+          {scene === "dryer" &&
+            [18, 34, 52, 68, 82].map((left, i) => (
+              <span key={left} className="lint" style={{ left: `${left}%`, top: "58%", animationDelay: `${i * 0.16}s` }} />
+            ))}
+        </div>
+      );
+    case "hvac":
+      return (
+        <div className="scene">
+          <div className="fan" />
+          {[26, 74].map((top, i) => (
+            <div key={top} className="stream" style={{ top: `${top}%`, animationDelay: `${i * 0.2}s` }} />
+          ))}
+        </div>
+      );
+    case "chimney":
+      return (
+        <div className="scene">
+          <div className="fireglow" />
+          {[16, 30, 44, 57, 70, 84].map((left, i) => (
+            <span key={left} className="ember" style={{ left: `${left}%`, animationDelay: `${i * 0.15}s` }} />
+          ))}
+        </div>
+      );
+    case "roof":
+      return (
+        <div className="scene">
+          <div className="house" />
+          <div className="roofline" />
+          {[22, 38, 54, 70].map((left, i) => (
+            <span key={left} className="shingle" style={{ left: `${left}%`, bottom: "62%", width: 34, animationDelay: `${0.3 + i * 0.14}s` }} />
+          ))}
+        </div>
+      );
+    case "plumbing":
+      return (
+        <div className="scene">
+          <div className="pipe"><div className="water" /></div>
+          {[30, 52, 74].map((left, i) => (
+            <span key={left} className="drop2" style={{ left: `${left}%`, animationDelay: `${i * 0.3}s` }} />
+          ))}
+        </div>
+      );
+    case "electric":
+      return (
+        <div className="scene">
+          <svg className="circuit" viewBox="0 0 420 220" style={{ position: "absolute", inset: 0 }}>
+            <path d="M20 180 H150 V110 H270 V60 H400" />
+            <path d="M20 200 H110 V140 H330 V90 H400" opacity="0.6" />
+          </svg>
+          <div className="bulb" />
+        </div>
+      );
+    case "lock":
+      return (
+        <div className="scene">
+          <div className="shackle" />
+          <div className="lockbody" />
+        </div>
+      );
+    case "appliance":
+      return (
+        <div className="scene">
+          <div className="appl">
+            <div className="appl-light" />
+            <div className="door" />
+          </div>
+        </div>
+      );
+    default:
+      return (
+        <div className="scene">
+          <div className="svc-wipe-bar absolute inset-y-0 w-full bg-gradient-to-r from-night via-brand-blue/50 to-night" />
+        </div>
+      );
+  }
+}
+
+const TransitionContext = createContext<{ go: (href: string, scene?: SceneKey) => void }>({
   go: () => {}
 });
 
@@ -14,77 +113,43 @@ export function useServiceTransition() {
   return useContext(TransitionContext);
 }
 
-export function familyForCategory(category: string): ServiceFamily {
-  if (category === "Garage Door") return "garage";
-  if (category === "Air Duct Cleaning") return "duct";
-  if (category === "Chimney Cleaning") return "chimney";
-  return "generic";
-}
-
-function Overlay({ family, label }: { family: ServiceFamily; label: string }) {
-  return (
-    <div className="svc-overlay pointer-events-none fixed inset-0 z-[90] overflow-hidden bg-night" aria-hidden="true">
-      {family === "garage" && (
-        <>
-          <div className="svc-panel-l absolute inset-y-0 left-0 w-1/2 border-r border-white/10 bg-coal" />
-          <div className="svc-panel-r absolute inset-y-0 right-0 w-1/2 border-l border-white/10 bg-coal" />
-          <div className="absolute inset-x-0 top-1/2 mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-brand-sky/70 to-transparent" />
-        </>
-      )}
-      {family === "duct" && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-          {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="h-[3px] w-2/3 overflow-hidden rounded-full bg-white/5">
-              <div
-                className="svc-flow-line h-full w-1/3 rounded-full bg-gradient-to-r from-transparent via-brand-sky to-transparent"
-                style={{ animationDelay: `${i * 0.16}s` }}
-              />
-            </div>
-          ))}
-        </div>
-      )}
-      {family === "chimney" && (
-        <div className="absolute inset-0">
-          {[12, 28, 44, 58, 72, 86].map((left, i) => (
-            <span
-              key={left}
-              className="svc-ember-dot absolute bottom-[18%] h-2 w-2 rounded-full bg-brand-gold"
-              style={{ left: `${left}%`, animationDelay: `${i * 0.14}s` }}
-            />
-          ))}
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-brand-gold/15 to-transparent" />
-        </div>
-      )}
-      {family === "generic" && (
-        <div className="svc-wipe-bar absolute inset-y-0 w-full bg-gradient-to-r from-night via-brand-blue/50 to-night" />
-      )}
-      <p className="absolute inset-x-0 bottom-[16%] text-center font-heading text-sm font-black uppercase tracking-[0.3em] text-white/85">
-        {label}
-      </p>
-    </div>
-  );
-}
-
 export function ServiceTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
-  const [active, setActive] = useState<{ family: ServiceFamily; label: string; key: number } | null>(null);
+  const [active, setActive] = useState<{ scene: SceneKey; label: string; key: number; duration: number } | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const end = useCallback(() => {
+    if (timer.current) clearTimeout(timer.current);
+    setActive(null);
+  }, []);
+
   const go = useCallback(
-    (href: string, family: ServiceFamily = "generic") => {
+    (href: string, scene?: SceneKey) => {
       const reduce = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       // Navigation happens FIRST, synchronously — the overlay can never strand the user.
       router.push(href);
       if (reduce) return;
-      const label = href
-        .split("/")
-        .filter(Boolean)
-        .pop()
-        ?.replace(/-/g, " ")
-        .replace(/\b\w/g, (c) => c.toUpperCase()) ?? "";
-      setActive({ family, label, key: Date.now() });
+      const sceneKey = scene ?? sceneForHref(href);
+      let seen: string[] = [];
+      try {
+        seen = JSON.parse(sessionStorage.getItem("hfs-scenes") ?? "[]") as string[];
+      } catch {
+        seen = [];
+      }
+      const firstTime = !seen.includes(sceneKey);
+      if (firstTime) {
+        try {
+          sessionStorage.setItem("hfs-scenes", JSON.stringify([...seen, sceneKey]));
+        } catch {
+          /* session storage unavailable */
+        }
+      }
+      const duration = firstTime ? 1400 : 650;
+      const label =
+        href.split("/").filter(Boolean).pop()?.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) ?? "";
+      setActive({ scene: sceneKey, label, key: Date.now(), duration });
       if (timer.current) clearTimeout(timer.current);
-      timer.current = setTimeout(() => setActive(null), 1500);
+      timer.current = setTimeout(() => setActive(null), duration + 500);
     },
     [router]
   );
@@ -92,7 +157,50 @@ export function ServiceTransitionProvider({ children }: { children: ReactNode })
   return (
     <TransitionContext.Provider value={{ go }}>
       {children}
-      {active && <Overlay key={active.key} family={active.family} label={active.label} />}
+      {active && (
+        <div
+          key={active.key}
+          className="fixed inset-0 z-[200] flex cursor-pointer flex-col items-center justify-center gap-[22px] overflow-hidden bg-night text-white"
+          style={{ animation: `svc-fadeout 0.45s ease ${active.duration}ms forwards` }}
+          onClick={end}
+          role="presentation"
+          aria-hidden="true"
+        >
+          <Scene scene={active.scene} />
+          <p className="px-5 text-center font-heading text-[clamp(1.5rem,4vw,2.4rem)] font-black leading-tight tracking-tight">
+            {active.label}
+          </p>
+          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-brand-sky">Home Fix Solution</p>
+          <p className="absolute bottom-[26px] text-[0.8rem] font-bold text-slate-400">Tap anywhere to skip</p>
+        </div>
+      )}
     </TransitionContext.Provider>
+  );
+}
+
+/** A link that plays the service's cinematic transition (navigation first). */
+export function TransitionLink({
+  href,
+  scene,
+  className,
+  children,
+  onClick
+}: {
+  href: string;
+  scene?: SceneKey;
+  className?: string;
+  children: ReactNode;
+  onClick?: () => void;
+}) {
+  const { go } = useServiceTransition();
+  function handle(e: MouseEvent) {
+    e.preventDefault();
+    onClick?.();
+    go(href, scene);
+  }
+  return (
+    <Link href={href} className={className} onClick={handle}>
+      {children}
+    </Link>
   );
 }

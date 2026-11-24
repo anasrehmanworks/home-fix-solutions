@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BadgePercent } from "lucide-react";
 import { offers } from "@/lib/site";
+import { Reveal } from "@/components/Reveal";
 
 export function OffersSection() {
   return (
@@ -13,9 +14,12 @@ export function OffersSection() {
             Claim a coupon before booking and bring the code with your appointment request.
           </p>
         </div>
+        <Reveal>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {offers.map((offer) => (
-            <article key={offer.slug} className="group relative overflow-hidden rounded-2xl bg-night p-6 text-white shadow-lift transition duration-300 hover:-translate-y-1">
+            <article key={offer.slug} className="group relative h-full overflow-hidden rounded-2xl bg-night p-6 text-white shadow-lift transition duration-300 hover:-translate-y-1">
+              <span aria-hidden="true" className="absolute -left-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-brand-pale" />
+              <span aria-hidden="true" className="absolute -right-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-brand-pale" />
               <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-blue/30 blur-2xl transition duration-500 group-hover:bg-brand-blue/50" />
               <div className="relative">
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue text-white">
@@ -37,7 +41,9 @@ export function OffersSection() {
           ))}
 
           {/* User-added coupon (2026-11-25): no code, no invented conditions */}
-          <article className="group relative overflow-hidden rounded-2xl bg-night p-6 text-white shadow-lift transition duration-300 hover:-translate-y-1">
+          <article className="group relative h-full overflow-hidden rounded-2xl bg-night p-6 text-white shadow-lift transition duration-300 hover:-translate-y-1">
+            <span aria-hidden="true" className="absolute -left-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-brand-pale" />
+            <span aria-hidden="true" className="absolute -right-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-brand-pale" />
             <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-blue/30 blur-2xl transition duration-500 group-hover:bg-brand-blue/50" />
             <div className="relative">
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue text-white">
@@ -57,6 +63,7 @@ export function OffersSection() {
             </div>
           </article>
         </div>
+        </Reveal>
       </div>
     </section>
   );

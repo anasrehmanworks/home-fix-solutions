@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { site } from "@/lib/site";
 
@@ -15,6 +14,10 @@ const serviceLinks = [
 ];
 
 const companyLinks = [
+  { href: "/coupons", label: "Coupons" },
+  { href: "/results", label: "Results" },
+  { href: "/reviews", label: "Reviews" },
+  { href: "/faq", label: "FAQ" },
   { href: "/areas-we-serve", label: "Areas We Serve" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
@@ -30,11 +33,9 @@ export function Footer() {
         {/* Logo & Contact */}
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <Image
-              src="/logo-transparent.png"
+            <img
+              src="/logo-transparent.svg"
               alt="Home Fix Solution"
-              width={719}
-              height={791}
               className="h-16 w-auto object-contain"
             />
             <div>

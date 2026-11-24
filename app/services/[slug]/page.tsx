@@ -7,13 +7,15 @@ import { BookingForm } from "@/components/BookingForm";
 import { JsonLd } from "@/components/JsonLd";
 import {
   createMetadata,
-  customerReviews,
   getService,
   getServicesByCategory,
   localBusinessSchema,
   servicePages,
   site
 } from "@/lib/site";
+import { reviewForService } from "@/lib/reviews";
+import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
+import { TransitionLink } from "@/components/ServiceTransition";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -68,7 +70,7 @@ export default async function ServicePage({ params }: Props) {
     .slice(0, 8);
 
   const paragraphs = service.details ?? longServiceCopy(service.title, service.category);
-  const matchedReview = customerReviews.find((review) => review.service === service.title);
+  const matchedReview = reviewForService(service.title, service.slug);
   const beforeAfter = familyBeforeAfter[service.category];
 
   return (
@@ -240,13 +242,11 @@ export default async function ServicePage({ params }: Props) {
                 <h2 className="mt-12 font-display text-3xl font-semibold">
                   {beforeAfter.label}
                 </h2>
-                <div className="relative mt-5 aspect-[16/8] overflow-hidden rounded-2xl shadow-crisp">
-                  <Image
-                    src={beforeAfter.image}
-                    alt={beforeAfter.label}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 60vw, 100vw"
+                <div className="mt-5">
+                  <BeforeAfterSlider
+                    image={beforeAfter.image}
+                    title={beforeAfter.label}
+                    description="Drag the handle to compare the before and after result."
                   />
                 </div>
               </>
@@ -260,7 +260,7 @@ export default async function ServicePage({ params }: Props) {
                   ))}
                 </div>
                 <blockquote className="text-lg leading-8 text-slate-100">
-                  &ldquo;{matchedReview.text}&rdquo;
+                  &ldquo;{matchedReview.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-4">
                   <span className="block text-sm font-black text-brand-ice">{matchedReview.name}</span>
@@ -275,13 +275,13 @@ export default async function ServicePage({ params }: Props) {
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {related.map((item) => (
-                <Link
+                <TransitionLink
                   key={item.slug}
                   href={`/services/${item.slug}`}
-                  className="rounded-xl border border-slate-200 p-4 font-bold transition hover:-translate-y-0.5 hover:border-brand-blue hover:shadow-crisp"
+                  className="block rounded-xl border border-slate-200 p-4 font-bold transition hover:-translate-y-0.5 hover:border-brand-blue hover:shadow-crisp"
                 >
                   {item.title}
-                </Link>
+                </TransitionLink>
               ))}
             </div>
 
@@ -291,10 +291,11 @@ export default async function ServicePage({ params }: Props) {
               {service.faqs.map((faq) => (
                 <details
                   key={faq.question}
-                  className="rounded-xl border border-slate-200 p-5"
+                  className="group rounded-xl border border-slate-200 p-5"
                 >
-                  <summary className="cursor-pointer text-lg font-black">
-                    {faq.question}
+                  <summary className="flex cursor-pointer list-none items-center gap-3.5 text-lg font-black [&::-webkit-details-marker]:hidden">
+                    <span className="flex-1">{faq.question}</span>
+                    <span className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-lg font-black text-brand-blue transition-transform duration-300 group-open:rotate-45">+</span>
                   </summary>
                   <p className="mt-3 leading-7 text-slate-600">{faq.answer}</p>
                 </details>

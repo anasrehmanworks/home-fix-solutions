@@ -24,7 +24,7 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
-        heading: ["var(--font-heading)", "var(--font-manrope)", "Arial", "sans-serif"],
+        heading: ["var(--font-display)", "var(--font-manrope)", "Arial", "sans-serif"],
         sans: ["var(--font-manrope)", "Arial", "Helvetica", "sans-serif"]
       },
       boxShadow: {
