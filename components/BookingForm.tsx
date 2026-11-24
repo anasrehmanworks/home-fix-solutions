@@ -7,7 +7,26 @@ import type { ServiceCategory } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-const slots = ["8 AM - 10 AM", "10 AM - 12 PM", "12 PM - 2 PM", "2 PM - 4 PM", "4 PM - 6 PM", "Emergency Service"];
+const slots = [
+  "8:00 AM – 10:00 AM",
+  "10:00 AM – 12:00 PM",
+  "12:00 PM – 2:00 PM",
+  "2:00 PM – 4:00 PM",
+  "4:00 PM – 6:00 PM",
+  "Emergency Service"
+];
+
+const ductIssues = [
+  "Dust returns quickly / visible build-up",
+  "Weak airflow / stuffy rooms",
+  "Allergy symptoms worse indoors",
+  "Recent remodel or move-in",
+  "Air Duct Repair",
+  "Air Duct Installation"
+];
+
+const ductUnits = ["1", "1–2", "2–6", "More than 10"];
+
 const zipSuggestions: Record<string, string[]> = {
   "77001": ["Houston", "Sugar Land", "Katy", "Pearland", "Pasadena"],
   "23451": ["Virginia Beach", "Norfolk", "Chesapeake", "Portsmouth", "Hampton"],
@@ -15,11 +34,19 @@ const zipSuggestions: Record<string, string[]> = {
   "07030": ["Hoboken", "Jersey City", "Weehawken", "Union City", "North Bergen"]
 };
 
-export function BookingForm({ compact = false }: { compact?: boolean }) {
+export function BookingForm({
+  compact = false,
+  initialCategory = "",
+  initialService = ""
+}: {
+  compact?: boolean;
+  initialCategory?: ServiceCategory | "";
+  initialService?: string;
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
-  const [category, setCategory] = useState<ServiceCategory | "">("");
-  const [service, setService] = useState("");
+  const [category, setCategory] = useState<ServiceCategory | "">(initialCategory);
+  const [service, setService] = useState(initialService);
   const [step, setStep] = useState(1);
   const [values, setValues] = useState<Record<string, string>>({});
   const [zip, setZip] = useState("");
@@ -46,7 +73,7 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
   function advance(formData: FormData, nextStep: number) {
     const nextValues = Object.fromEntries(Array.from(formData.entries()).map(([key, value]) => [key, String(value)]));
     setValues((current) => ({ ...current, ...nextValues }));
-    if (nextStep === 3) {
+    if (nextStep === 3 && !initialCategory) {
       setCategory("");
       setService("");
     }
@@ -158,12 +185,40 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
                 </select>
               </label>
             )}
+
+            {category === "Air Duct Cleaning" && (
+              <>
+                <fieldset className={compact ? "grid gap-3" : "grid gap-3 md:col-span-2"}>
+                  <legend className="label mb-2">What Happens With Your Duct?</legend>
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {ductIssues.map((issue) => (
+                      <label key={issue} className="slot-card !py-2.5 text-left text-[13px] leading-snug">
+                        <input name="ductIssue" type="radio" value={issue} suppressHydrationWarning />
+                        {issue}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+                <fieldset className={compact ? "grid gap-3" : "grid gap-3 md:col-span-2"}>
+                  <legend className="label mb-2">Number of Units</legend>
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                    {ductUnits.map((unit) => (
+                      <label key={unit} className="slot-card">
+                        <input name="numberOfUnits" type="radio" value={unit} suppressHydrationWarning />
+                        {unit}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </>
+            )}
+
             <label className={compact ? "grid gap-1" : "grid gap-1 md:col-span-2"}>
               <span className="label">Preferred Date</span>
               <input className="field" name="preferredDate" type="date" required suppressHydrationWarning />
             </label>
             <fieldset className={compact ? "grid gap-3" : "grid gap-3 md:col-span-2"}>
-              <legend className="label mb-2">Available Time Slots</legend>
+              <legend className="label mb-2">Requested Time Slot</legend>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {slots.map((slot) => (
                   <label key={slot} className="slot-card">
@@ -172,6 +227,9 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
                   </label>
                 ))}
               </div>
+              <p className="text-xs font-semibold leading-5 text-slate-500">
+                Your requested time is subject to confirmation — we&apos;ll confirm your appointment by phone. Slots are requests, not guaranteed availability.
+              </p>
             </fieldset>
           </div>
         </>

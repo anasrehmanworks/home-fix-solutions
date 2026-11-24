@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Manrope, Outfit } from "next/font/google";
+import { Fraunces, Manrope, Outfit } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { StickyPhone } from "@/components/StickyPhone";
 import { JsonLd } from "@/components/JsonLd";
+import { ServiceTransitionProvider } from "@/components/ServiceTransition";
 import { localBusinessSchema, site } from "@/lib/site";
 import "./globals.css";
 
@@ -18,6 +19,13 @@ const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-heading"
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+  weight: ["500", "600", "700"]
 });
 
 export const metadata: Metadata = {
@@ -54,7 +62,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       </head>
       <body
-        className={`${manrope.variable} ${outfit.variable}`}
+        className={`${manrope.variable} ${outfit.variable} ${fraunces.variable}`}
         suppressHydrationWarning
       >
         <noscript>
@@ -67,11 +75,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <JsonLd data={localBusinessSchema()} />
 
-        <Header />
+        <ServiceTransitionProvider>
+          <Header />
 
-        <main>{children}</main>
+          <main>{children}</main>
 
-        <Footer />
+          <Footer />
+        </ServiceTransitionProvider>
 
         <StickyPhone />
 

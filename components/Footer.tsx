@@ -1,24 +1,45 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, Facebook, Instagram } from "lucide-react";
-import { site, statesServed } from "@/lib/site";
+import { site } from "@/lib/site";
+
+const serviceLinks = [
+  { href: "/services/garage-door-repair", label: "Garage Door" },
+  { href: "/services/air-duct-cleaning", label: "Air Duct Cleaning" },
+  { href: "/services/chimney-cleaning", label: "Chimney Cleaning" },
+  { href: "/services/plumbing", label: "Plumbing" },
+  { href: "/services/electrician", label: "Electrician" },
+  { href: "/services/locksmith", label: "Locksmith" },
+  { href: "/services/roofing", label: "Roofing" },
+  { href: "/services/hvac", label: "HVAC" }
+];
+
+const companyLinks = [
+  { href: "/areas-we-serve", label: "Areas We Serve" },
+  { href: "/careers", label: "Careers" },
+  { href: "/contact", label: "Contact" },
+  { href: "/leave-a-review", label: "Leave a Review" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-and-conditions", label: "Terms & Conditions" }
+];
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-white">
-      <div className="section-shell grid gap-10 py-12 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
+    <footer className="bg-night text-white">
+      <div className="section-shell grid gap-10 py-14 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
         {/* Logo & Contact */}
         <div>
           <div className="mb-4 flex items-center gap-3">
             <Image
-              src={site.logo}
+              src="/logo-transparent.png"
               alt="Home Fix Solution"
-              width={210}
-              height={81}
-              className="h-14 w-auto rounded-md bg-white object-contain p-1"
+              width={719}
+              height={791}
+              className="h-16 w-auto object-contain"
             />
             <div>
-              <p className="text-sm text-slate-300">
+              <p className="font-heading text-base font-black leading-tight">Home Fix Solution</p>
+              <p className="text-sm text-slate-400">
                 Nationwide Home Service Network
               </p>
             </div>
@@ -33,7 +54,7 @@ export function Footer() {
           {/* Phone */}
           <a
             href={site.phoneHref}
-            className="mt-5 inline-flex items-center gap-2 rounded-md bg-brand-red px-4 py-3 text-sm font-black text-white"
+            className="mt-5 inline-flex items-center gap-2 rounded-lg bg-brand-blue px-4 py-3 text-sm font-black text-white transition hover:bg-brand-deep"
           >
             <Phone size={17} />
             <span>{site.phone}</span>
@@ -42,7 +63,7 @@ export function Footer() {
           {/* Email */}
           <a
             href="mailto:sales@homefixsolution.org"
-            className="mt-3 inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 py-3 text-sm font-black text-white transition hover:bg-white/20"
+            className="ml-3 mt-3 inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-sm font-black text-white transition hover:bg-white/20"
           >
             <Mail size={17} />
             <span>sales@homefixsolution.org</span>
@@ -51,123 +72,41 @@ export function Footer() {
 
         {/* Services */}
         <div>
-          <h2 className="mb-4 text-sm font-black uppercase text-brand-gold">
+          <h2 className="mb-4 text-sm font-black uppercase tracking-wider text-brand-ice">
             Services
           </h2>
 
           <ul className="grid gap-3 text-sm text-slate-300">
-            <li>
-              <Link
-                href="/services/garage-door-repair"
-                className="hover:text-white"
-              >
-                Garage Door
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                href="/services/air-duct-cleaning"
-                className="hover:text-white"
-              >
-                Air Duct Cleaning
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                href="/services/chimney-cleaning"
-                className="hover:text-white"
-              >
-                Chimney Cleaning
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/services/plumbing" className="hover:text-white">
-                Plumbing
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/services/electrician" className="hover:text-white">
-                Electrician
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/services/locksmith" className="hover:text-white">
-                Locksmith
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/services/roofing" className="hover:text-white">
-                Roofing
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/services/hvac" className="hover:text-white">
-                HVAC
-              </Link>
-            </li>
+            {serviceLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="transition hover:text-white">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Company */}
         <div>
-          <h2 className="mb-4 text-sm font-black uppercase text-brand-gold">
+          <h2 className="mb-4 text-sm font-black uppercase tracking-wider text-brand-ice">
             Company
           </h2>
 
           <ul className="grid gap-2 text-sm text-slate-300">
-            <li>
-              <Link href="/areas-we-serve" className="hover:text-white">
-                Areas We Serve
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/careers" className="hover:text-white">
-                Careers
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/contact" className="hover:text-white">
-                Contact
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/leave-a-review" className="hover:text-white">
-                Leave a Review
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/privacy-policy" className="hover:text-white">
-                Privacy Policy
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/terms-and-conditions" className="hover:text-white">
-                Terms & Conditions
-              </Link>
-            </li>
+            {companyLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="transition hover:text-white">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
-
-          <p className="mt-4 text-xs leading-5 text-slate-400">
-            Service areas include {statesServed.slice(0, 4).join(", ")} and many
-            more.
-          </p>
         </div>
 
         {/* Follow Us */}
         <div>
-          <h2 className="mb-4 text-sm font-black uppercase text-brand-gold">
+          <h2 className="mb-4 text-sm font-black uppercase tracking-wider text-brand-ice">
             Follow Us
           </h2>
 

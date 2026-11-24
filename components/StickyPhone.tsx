@@ -14,13 +14,13 @@ export function StickyPhone() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
-        className="fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl animate-bounce"
+        className="fixed bottom-24 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-coal shadow-lift transition-all duration-300 hover:scale-105 hover:border-brand-sky/60"
       >
         <Image
           src="/whatsapp.svg"
           alt="WhatsApp"
-          width={30}
-          height={30}
+          width={28}
+          height={28}
           priority
         />
       </a>
@@ -30,9 +30,9 @@ export function StickyPhone() {
         id="track-phone"
         href={site.phoneHref}
         aria-label="Call Now"
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl animate-pulse"
+        className="fixed bottom-6 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand-blue text-white shadow-lift transition-all duration-300 hover:scale-105 hover:bg-brand-deep"
       >
-        <Phone size={26} />
+        <Phone size={25} />
       </a>
     </>
   );

@@ -183,32 +183,36 @@ export default function CharlotteGarageDoorRepairPage() {
         ]}
       />
 
-      {/* Breadcrumbs */}
-      <section className="bg-brand-pale py-6">
-        <div className="section-shell">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-night text-white">
+        <Image
+          src="/site-images/garage-door-new-installation.jpg"
+          alt="Professional garage door service in Charlotte, NC"
+          fill
+          priority
+          className="object-cover opacity-35"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-night via-night/82 to-night/35" />
+        <div className="section-shell relative py-14 lg:py-18">
           <Breadcrumbs
+            dark
             items={[
               { label: "Areas We Serve", href: "/areas-we-serve" },
               { label: "Charlotte, NC" },
               { label: "Garage Door Repair" }
             ]}
           />
-        </div>
-      </section>
-
-      {/* Hero */}
-      <section className="bg-white py-12 md:py-16">
-        <div className="section-shell grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-          <div>
-            <p className="mb-3 text-sm font-black uppercase tracking-wide text-brand-red">
+          <div className="mt-10 max-w-3xl">
+            <p className="eyebrow text-brand-ice">
               Garage Door Repair in Charlotte
             </p>
 
-            <h1 className="text-4xl font-black leading-tight tracking-tight text-ink md:text-5xl">
+            <h1 className="mt-4 font-display text-5xl font-semibold leading-tight md:text-6xl">
               Garage Door Repair in Charlotte, NC
             </h1>
 
-            <p className="mt-5 text-lg leading-8 text-slate-600">
+            <p className="mt-5 text-lg leading-8 text-slate-200">
               A malfunctioning garage door can quickly become a major
               inconvenience for homeowners and businesses. Whether your door
               is stuck, making unusual noises, moving unevenly, or refusing to
@@ -216,7 +220,7 @@ export default function CharlotteGarageDoorRepairPage() {
               dependable operation.
             </p>
 
-            <p className="mt-5 text-base leading-8 text-slate-600">
+            <p className="mt-5 text-base leading-8 text-slate-300">
               Home Fix Solution provides reliable Garage Door Repair in
               Charlotte for residential and commercial properties. Our
               technicians can help diagnose and repair common problems
@@ -224,13 +228,13 @@ export default function CharlotteGarageDoorRepairPage() {
               openers, and other components.
             </p>
 
-            <p className="mt-5 text-base leading-8 text-slate-600">
+            <p className="mt-5 text-base leading-8 text-slate-300">
               Whether you need a routine repair or immediate assistance with
               an unexpected breakdown, we are here to help you get your garage
               door working properly again.
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={site.phoneHref}
                 className="btn-primary"
@@ -241,21 +245,10 @@ export default function CharlotteGarageDoorRepairPage() {
                 <span>{site.phone}</span>
               </a>
 
-              <a href="#book" className="btn-secondary">
-  Book Garage Door Repair
-</a>
+              <a href="#book" className="btn-ghost-light">
+                Book Garage Door Repair
+              </a>
             </div>
-          </div>
-
-          <div className="relative min-h-[330px] overflow-hidden rounded-md">
-            <Image
-              src="/site-images/garage-door-new-installation.jpg"
-              alt="Professional garage door service in Charlotte, NC"
-              fill
-              priority
-              className="object-cover"
-              sizes="(min-width: 1024px) 45vw, 100vw"
-            />
           </div>
         </div>
       </section>
@@ -312,7 +305,7 @@ export default function CharlotteGarageDoorRepairPage() {
               <div className="rounded-lg border border-slate-200 bg-brand-pale p-6 md:p-8">
                 <div className="flex items-start gap-4">
                   <div className="rounded-md bg-white p-3 shadow-sm">
-                    <Clock3 className="text-brand-red" size={24} />
+                    <Clock3 className="text-brand-blue" size={24} />
                   </div>
 
                   <div>
@@ -345,7 +338,7 @@ export default function CharlotteGarageDoorRepairPage() {
                       className="flex items-start gap-3 rounded-md bg-white p-4"
                     >
                       <ShieldCheck
-                        className="mt-0.5 shrink-0 text-brand-red"
+                        className="mt-0.5 shrink-0 text-brand-blue"
                         size={20}
                       />
                       <span className="font-semibold text-slate-700">
@@ -487,7 +480,7 @@ export default function CharlotteGarageDoorRepairPage() {
             <section className="mt-14">
               <div className="flex items-center gap-3">
                 <div className="rounded-md bg-brand-pale p-3">
-                  <Wrench className="text-brand-red" size={24} />
+                  <Wrench className="text-brand-blue" size={24} />
                 </div>
 
                 <h2 className="text-3xl font-black text-ink md:text-4xl">
@@ -512,7 +505,7 @@ export default function CharlotteGarageDoorRepairPage() {
                     className="flex items-start gap-3 rounded-md bg-brand-pale p-4"
                   >
                     <ShieldCheck
-                      className="mt-0.5 shrink-0 text-brand-red"
+                      className="mt-0.5 shrink-0 text-brand-blue"
                       size={20}
                     />
                     <span className="font-semibold leading-6 text-slate-700">
