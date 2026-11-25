@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Mail, Facebook, Instagram } from "lucide-react";
+import { Clock, Facebook, Instagram, Mail, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
 const serviceLinks = [
@@ -13,131 +13,87 @@ const serviceLinks = [
   { href: "/services/hvac", label: "HVAC" }
 ];
 
-const companyLinks = [
-  { href: "/coupons", label: "Coupons" },
-  { href: "/results", label: "Results" },
-  { href: "/reviews", label: "Reviews" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/areas-we-serve", label: "Areas We Serve" },
-  { href: "/careers", label: "Careers" },
-  { href: "/contact", label: "Contact" },
-  { href: "/leave-a-review", label: "Leave a Review" },
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms-and-conditions", label: "Terms & Conditions" }
-];
-
 export function Footer() {
   return (
     <footer className="bg-night text-white">
-      <div className="section-shell grid gap-10 py-14 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
-        {/* Logo & Contact */}
-        <div>
-          <div className="mb-4 flex items-center gap-3">
-            <img
-              src="/logo-transparent.svg"
-              alt="Home Fix Solution"
-              className="h-16 w-auto object-contain"
-            />
-            <div>
-              <p className="font-heading text-base font-black leading-tight">Home Fix Solution</p>
-              <p className="text-sm text-slate-400">
-                Nationwide Home Service Network
-              </p>
+      <div className="section-shell py-12">
+        <div className="flex flex-wrap items-start justify-between gap-8">
+          {/* Brand */}
+          <div className="max-w-sm">
+            <div className="flex items-center gap-3">
+              <img
+                src="/logo-transparent.svg"
+                alt="Home Fix Solution"
+                className="h-14 w-auto object-contain"
+              />
+              <div>
+                <p className="font-heading text-base font-black leading-tight">Home Fix Solution</p>
+                <p className="text-sm text-slate-400">Nationwide Home Service Network</p>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-6 text-slate-300">
+              Professional home services across 30+ states — garage doors, air ducts, chimneys, plumbing, electrical, locksmith, roofing, and HVAC.
+            </p>
+          </div>
+
+          {/* Essentials */}
+          <div className="flex flex-col items-start gap-3">
+            <a
+              href={site.phoneHref}
+              className="inline-flex items-center gap-2 rounded-lg bg-brand-blue px-4 py-3 text-sm font-black text-white transition hover:bg-brand-deep"
+            >
+              <Phone size={17} />
+              <span>{site.phone}</span>
+            </a>
+            <a
+              href="mailto:sales@homefixsolution.org"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-sm font-black text-white transition hover:bg-white/20"
+            >
+              <Mail size={17} />
+              <span>sales@homefixsolution.org</span>
+            </a>
+            <p className="inline-flex items-center gap-2 px-1 text-sm font-bold text-slate-300">
+              <Clock size={16} className="text-brand-sky" /> Mon–Sat, 8 AM – 7 PM
+            </p>
+            <div className="flex items-center gap-4 px-1 pt-1">
+              <a
+                href="https://www.facebook.com/homefixsolution1"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="text-slate-300 transition hover:text-brand-sky"
+              >
+                <Facebook size={24} />
+              </a>
+              <a
+                href="https://www.instagram.com/homefixsolution1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="text-slate-300 transition hover:text-brand-sky"
+              >
+                <Instagram size={24} />
+              </a>
             </div>
           </div>
-
-          <p className="max-w-sm text-sm leading-6 text-slate-300">
-            Professional service across 30+ states for garage doors, air duct
-            cleaning, chimney care, plumbing, electrical, locksmith, roofing,
-            and HVAC requests.
-          </p>
-
-          {/* Phone */}
-          <a
-            href={site.phoneHref}
-            className="mt-5 inline-flex items-center gap-2 rounded-lg bg-brand-blue px-4 py-3 text-sm font-black text-white transition hover:bg-brand-deep"
-          >
-            <Phone size={17} />
-            <span>{site.phone}</span>
-          </a>
-
-          {/* Email */}
-          <a
-            href="mailto:sales@homefixsolution.org"
-            className="ml-3 mt-3 inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-sm font-black text-white transition hover:bg-white/20"
-          >
-            <Mail size={17} />
-            <span>sales@homefixsolution.org</span>
-          </a>
         </div>
 
-        {/* Services */}
-        <div>
-          <h2 className="mb-4 text-sm font-black uppercase tracking-wider text-brand-ice">
-            Services
-          </h2>
-
-          <ul className="grid gap-3 text-sm text-slate-300">
-            {serviceLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="transition hover:text-white">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Company */}
-        <div>
-          <h2 className="mb-4 text-sm font-black uppercase tracking-wider text-brand-ice">
-            Company
-          </h2>
-
-          <ul className="grid gap-2 text-sm text-slate-300">
-            {companyLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="transition hover:text-white">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Follow Us */}
-        <div>
-          <h2 className="mb-4 text-sm font-black uppercase tracking-wider text-brand-ice">
-            Follow Us
-          </h2>
-
-          <div className="flex items-center gap-5">
-            <a
-              href="https://www.facebook.com/homefixsolution1"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="transition duration-200 hover:brightness-125"
-            >
-              <Facebook size={34} className="text-blue-500" />
-            </a>
-
-            <a
-              href="https://www.instagram.com/homefixsolution1/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="transition duration-200 hover:brightness-125"
-            >
-              <Instagram size={34} className="text-pink-500" />
-            </a>
-          </div>
-        </div>
+        {/* Services — one quiet line */}
+        <nav aria-label="Services" className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-white/[0.07] pt-6 text-[0.83rem] font-bold text-slate-400">
+          {serviceLinks.map((link, i) => (
+            <span key={link.href} className="flex items-center gap-3">
+              {i > 0 && <span aria-hidden="true" className="h-1 w-1 rounded-full bg-brand-blue" />}
+              <Link href={link.href} className="transition hover:text-white">
+                {link.label}
+              </Link>
+            </span>
+          ))}
+        </nav>
       </div>
 
-      <div aria-hidden="true" className="select-none overflow-hidden px-2 pb-2 pt-4">
+      <div aria-hidden="true" className="select-none overflow-hidden px-2 pb-2 pt-2">
         <p
-          className="whitespace-nowrap text-center font-heading text-[11.5vw] font-black leading-[0.95] tracking-tight text-transparent"
+          className="whitespace-nowrap text-center font-heading text-[7.2vw] font-black leading-[0.95] tracking-tight text-transparent"
           style={{ WebkitTextStroke: "1px rgba(127, 179, 236, 0.22)" }}
         >
           HOME FIX SOLUTION

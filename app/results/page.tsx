@@ -3,12 +3,13 @@ import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
-import { beforeAfterGallery, createMetadata, localBusinessSchema, site } from "@/lib/site";
+import { createMetadata, localBusinessSchema, site } from "@/lib/site";
+import { beforeAfterPairs } from "@/lib/gallery";
 
 export const metadata = createMetadata({
   title: "Before & After Results",
   description:
-    "See before and after results from Home Fix Solution garage door, air duct cleaning, and chimney cleaning services. Drag the sliders to compare.",
+    "See before and after results from Home Fix Solution garage door, air duct cleaning, chimney cleaning, and roofing services. Drag the sliders to compare.",
   path: "/results"
 });
 
@@ -20,14 +21,14 @@ export default function ResultsPage() {
         crumbs={[{ href: "/", label: "Home" }, { label: "Results" }]}
         eyebrow="Before & After"
         title="Visible Service Results"
-        intro="Drag the handle on each photo to compare the before and after result for garage door, air duct, and chimney service."
+        intro="Drag the handle on each photo to compare the before and after result for garage door, air duct, chimney, and roofing service."
       />
       <section className="bg-night py-20 text-white">
         <div className="section-shell">
-          <div className="grid gap-5 md:grid-cols-3">
-            {beforeAfterGallery.map((item, i) => (
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {beforeAfterPairs.map((item, i) => (
               <Reveal key={item.title} delay={i * 110}>
-                <BeforeAfterSlider image={item.image} title={item.title} description={item.description} />
+                <BeforeAfterSlider before={item.before} after={item.after} title={item.title} description={item.description} />
               </Reveal>
             ))}
           </div>

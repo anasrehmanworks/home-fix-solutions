@@ -111,7 +111,7 @@ export function OfferRedeemForm({ offer }: OfferFormProps) {
             ))}
           </div>
           <p className="text-xs font-semibold leading-5 text-slate-400">
-            Your requested time is subject to confirmation — we&apos;ll confirm your appointment by phone.
+            We&apos;ll call you within 10 minutes. Don&apos;t worry!
           </p>
         </fieldset>
       </div>

@@ -10,10 +10,10 @@ import { OffersSection } from "@/components/OffersSection";
 import { Reveal } from "@/components/Reveal";
 import { ServiceRack } from "@/components/ServiceRack";
 import type { RackItem } from "@/components/ServiceRack";
-import { TransitionLink } from "@/components/ServiceTransition";
 import { sceneForSlug } from "@/lib/scenes";
 import { Tilt } from "@/components/Tilt";
-import { beforeAfterGallery, createMetadata, customerReviews, getService, getServicesByCategory, localBusinessSchema, primaryServices, serviceCategories, site, statesServed } from "@/lib/site";
+import { createMetadata, customerReviews, getService, getServicesByCategory, localBusinessSchema, primaryServices, site, statesServed } from "@/lib/site";
+import { beforeAfterPairs } from "@/lib/gallery";
 
 export const metadata = createMetadata({
   title: "Home Fix Solution | Home Services Across 30+ States",
@@ -86,8 +86,7 @@ const rackItems: RackItem[] = homeServices.map((item) => {
 const heroStats: Array<{ value: number; suffix: string; label: string }> = [
   { value: 30, suffix: "+", label: "States Served" },
   { value: 10, suffix: "", label: "Core Services" },
-  { value: 6, suffix: "", label: "Current Coupons" },
-  { value: 8, suffix: "", label: "Verified Reviews" }
+  { value: 6, suffix: "", label: "Current Coupons" }
 ];
 
 const heroWords = "Premium Home Services, Booked With Confidence".split(" ");
@@ -179,47 +178,14 @@ export default function HomePage() {
             <p className="eyebrow text-brand-ice">Before &amp; After</p>
             <h2 className="mt-3 font-display text-4xl font-semibold">Visible Service Results</h2>
             <p className="mt-3 leading-7 text-slate-300">
-              See the kind of clean, professional improvements customers expect from garage door, air duct, and chimney service.
+              See the kind of clean, professional improvements customers expect from garage door, air duct, chimney, and roofing service.
             </p>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
-            {beforeAfterGallery.map((item, i) => (
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {beforeAfterPairs.map((item, i) => (
               <Reveal key={item.title} delay={i * 110}>
-                <BeforeAfterSlider image={item.image} title={item.title} description={item.description} />
+                <BeforeAfterSlider before={item.before} after={item.after} title={item.title} description={item.description} />
               </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* EXPLORE SERVICES */}
-      <section className="bg-coal py-20">
-        <div className="section-shell grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-          <div>
-            <p className="eyebrow">Browse</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold">Explore Services</h2>
-            <p className="mt-3 leading-7 text-slate-300">
-              Browse dedicated pages for garage door, air duct cleaning, chimney cleaning, plumbing, electrical, locksmith, roofing, and HVAC requests.
-            </p>
-            <Link href="/contact#book" className="btn-primary mt-6">Book Service</Link>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {serviceCategories.map((category) => (
-              <div key={category} className="overflow-hidden rounded-2xl border border-white/10 bg-coal shadow-sm">
-                <div className="relative aspect-[4/3]">
-                  <Image src={primaryServices.find((item) => item.title === category)?.image ?? site.heroImage} alt={`${category} services`} fill className="object-cover" sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw" />
-                </div>
-                <div className="p-5">
-                  <h3 className="text-xl font-black">{category}</h3>
-                  <div className="mt-4 grid gap-2">
-                    {getServicesByCategory(category).slice(0, 6).map((service) => (
-                      <TransitionLink key={service.slug} href={`/services/${service.slug}`} className="block rounded-lg px-2 py-2 text-sm font-bold leading-5 text-white transition hover:bg-coal hover:text-brand-blue">
-                        <span className="break-words">{service.title}</span>
-                      </TransitionLink>
-                    ))}
-                  </div>
-                </div>
-              </div>
             ))}
           </div>
         </div>

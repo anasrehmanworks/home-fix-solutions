@@ -14,6 +14,7 @@ import {
   site
 } from "@/lib/site";
 import { reviewForService } from "@/lib/reviews";
+import { familyPairs } from "@/lib/gallery";
 import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import { TransitionLink } from "@/components/ServiceTransition";
 
@@ -53,11 +54,7 @@ function longServiceCopy(serviceTitle: string, category: string) {
   ];
 }
 
-const familyBeforeAfter: Record<string, { image: string; label: string }> = {
-  "Garage Door": { image: "/site-images/garage-door-before-after.jpg", label: "Garage Door Results" },
-  "Air Duct Cleaning": { image: "/site-images/air-duct-before-after.jpg", label: "Air Duct Cleaning Results" },
-  "Chimney Cleaning": { image: "/site-images/chimney-cleaning-before-after.jpg", label: "Chimney Cleaning Results" }
-};
+const familyBeforeAfter = familyPairs;
 
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
@@ -244,7 +241,8 @@ export default async function ServicePage({ params }: Props) {
                 </h2>
                 <div className="mt-5">
                   <BeforeAfterSlider
-                    image={beforeAfter.image}
+                    before={beforeAfter.before}
+                    after={beforeAfter.after}
                     title={beforeAfter.label}
                     description="Drag the handle to compare the before and after result."
                   />

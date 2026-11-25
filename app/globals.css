@@ -235,9 +235,7 @@ select.field option {
 
 /* before / after slider */
 .ba { position: relative; overflow: hidden; touch-action: none; cursor: ew-resize; }
-.ba .ba-layer { position: absolute; inset: 0; background-size: 200% 100%; background-repeat: no-repeat; }
-.ba .ba-before { background-position: 0% 0; }
-.ba .ba-after { background-position: 100% 0; }
+.ba .ba-layer { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
 .ba .ba-tag { position: absolute; top: 12px; background: rgba(10, 10, 11, 0.75); color: #fff; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; backdrop-filter: blur(3px); white-space: nowrap; transition: opacity 0.25s; }
 
 /* ---------- transition scenes (ported from v3.1) ---------- */

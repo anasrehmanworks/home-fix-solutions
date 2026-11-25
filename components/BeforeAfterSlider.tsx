@@ -5,17 +5,18 @@ import { ChevronsLeftRight } from "lucide-react";
 
 /**
  * Draggable before/after slider, ported from the approved v3.1 design.
- * The site's gallery images are side-by-side composites: the "before" layer
- * shows the left half, the "after" layer the right half (background-size 200%),
- * clipped by the drag position. Labels live in containers clipped to their own
- * side and fade out when that side is nearly covered.
+ * Two matched full-frame photos: the "after" layer is clipped by the drag
+ * position over the "before" layer. Labels live in containers clipped to
+ * their own side and fade out when that side is nearly covered.
  */
 export function BeforeAfterSlider({
-  image,
+  before,
+  after,
   title,
   description
 }: {
-  image: string;
+  before: string;
+  after: string;
   title: string;
   description: string;
 }) {
@@ -64,10 +65,10 @@ export function BeforeAfterSlider({
           dragging.current = false;
         }}
       >
-        <div className="ba-layer ba-before" style={{ backgroundImage: `url(${image})` }} />
+        <div className="ba-layer ba-before" style={{ backgroundImage: `url(${before})` }} />
         <div
           className="ba-layer ba-after"
-          style={{ backgroundImage: `url(${image})`, clipPath: `inset(0 0 0 ${pos}%)` }}
+          style={{ backgroundImage: `url(${after})`, clipPath: `inset(0 0 0 ${pos}%)` }}
         />
         {/* labels clipped to their own side */}
         <div className="pointer-events-none absolute inset-y-0 left-0 overflow-hidden" style={{ width: `${pos}%` }}>

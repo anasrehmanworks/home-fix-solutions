@@ -290,8 +290,8 @@ export function BookingForm({
                     </label>
                   ))}
                 </div>
-                <p className="text-xs font-semibold leading-5 text-slate-400">
-                  Your requested time is subject to confirmation — we&apos;ll confirm your appointment by phone. Slots are requests, not guaranteed availability.
+                <p className="text-[0.83rem] font-bold leading-5 text-brand-sky">
+                  We&apos;ll call you within 10 minutes. Don&apos;t worry!
                 </p>
               </fieldset>
             </div>
@@ -309,8 +309,8 @@ export function BookingForm({
                     </div>
                   ))}
               </dl>
-              <p className="mt-4 text-xs font-semibold leading-5 text-slate-400">
-                Your requested time is subject to confirmation — we&apos;ll confirm your appointment by phone.
+              <p className="mt-4 text-[0.83rem] font-bold leading-5 text-brand-sky">
+                We&apos;ll call you within 10 minutes. Don&apos;t worry!
               </p>
             </div>
           )}
