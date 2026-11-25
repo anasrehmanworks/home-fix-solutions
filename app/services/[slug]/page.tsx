@@ -143,7 +143,7 @@ export default async function ServicePage({ params }: Props) {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-night via-night/80 to-night/30" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-night to-transparent" />
-        <div className="section-shell relative py-14 lg:py-20">
+        <div className="section-shell relative pb-14 pt-32 lg:pb-16 lg:pt-36">
           <Breadcrumbs
             dark
             items={[
@@ -179,7 +179,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* CONTENT + BOOKING */}
-      <section className="bg-white py-16">
+      <section className="bg-night py-16">
         <div className="section-shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">
           <aside
             id="book"
@@ -193,7 +193,7 @@ export default async function ServicePage({ params }: Props) {
               Professional {service.title}
             </h2>
 
-            <div className="mt-5 grid gap-5 text-base leading-8 text-slate-700">
+            <div className="mt-5 grid gap-5 text-base leading-8 text-slate-200">
               {paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -207,7 +207,7 @@ export default async function ServicePage({ params }: Props) {
               {service.services.map((item) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-brand-blue/50 hover:shadow-crisp"
+                  className="flex items-start gap-3 rounded-xl border border-white/10 p-4 transition hover:border-brand-blue/50 hover:shadow-crisp"
                 >
                   <CheckCircle2
                     className="mt-0.5 shrink-0 text-brand-blue"
@@ -226,7 +226,7 @@ export default async function ServicePage({ params }: Props) {
               {service.signs.map((item) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 rounded-xl bg-brand-pale p-4"
+                  className="flex items-start gap-3 rounded-xl bg-coal p-4"
                 >
                   <ShieldCheck
                     className="mt-0.5 shrink-0 text-brand-blue"
@@ -254,7 +254,7 @@ export default async function ServicePage({ params }: Props) {
 
             {matchedReview && (
               <figure className="mt-12 rounded-2xl bg-night p-7 text-white">
-                <div className="mb-4 flex gap-1 text-brand-gold">
+                <div className="mb-4 flex gap-1 text-brand-sky">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} size={18} fill="currentColor" />
                   ))}
@@ -278,7 +278,7 @@ export default async function ServicePage({ params }: Props) {
                 <TransitionLink
                   key={item.slug}
                   href={`/services/${item.slug}`}
-                  className="block rounded-xl border border-slate-200 p-4 font-bold transition hover:-translate-y-0.5 hover:border-brand-blue hover:shadow-crisp"
+                  className="block rounded-xl border border-white/10 p-4 font-bold transition hover:-translate-y-0.5 hover:border-brand-blue hover:shadow-crisp"
                 >
                   {item.title}
                 </TransitionLink>
@@ -291,13 +291,13 @@ export default async function ServicePage({ params }: Props) {
               {service.faqs.map((faq) => (
                 <details
                   key={faq.question}
-                  className="group rounded-xl border border-slate-200 p-5"
+                  className="group rounded-xl border border-white/10 p-5"
                 >
                   <summary className="flex cursor-pointer list-none items-center gap-3.5 text-lg font-black [&::-webkit-details-marker]:hidden">
                     <span className="flex-1">{faq.question}</span>
-                    <span className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-lg font-black text-brand-blue transition-transform duration-300 group-open:rotate-45">+</span>
+                    <span className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-full border border-white/10 bg-smoke text-lg font-black text-brand-blue transition-transform duration-300 group-open:rotate-45">+</span>
                   </summary>
-                  <p className="mt-3 leading-7 text-slate-600">{faq.answer}</p>
+                  <p className="mt-3 leading-7 text-slate-300">{faq.answer}</p>
                 </details>
               ))}
             </div>

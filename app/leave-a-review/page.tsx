@@ -19,7 +19,7 @@ export default function LeaveReviewPage() {
         title="Leave a Review"
         intro="Tell us about your Home Fix Solution service experience."
       />
-      <section className="bg-white py-16">
+      <section className="bg-coal py-16">
         <div className="section-shell max-w-6xl">
           <div className="mx-auto max-w-5xl">
             <ReviewForm />

@@ -5,21 +5,21 @@ import { Reveal } from "@/components/Reveal";
 
 export function OffersSection() {
   return (
-    <section className="bg-brand-pale py-20">
+    <section className="bg-night py-20">
       <div className="section-shell">
         <div className="mb-10 max-w-3xl">
           <p className="eyebrow">Limited-Time Offers</p>
           <h2 className="mt-3 font-display text-4xl font-semibold">Service Coupons</h2>
-          <p className="mt-3 leading-7 text-slate-600">
+          <p className="mt-3 leading-7 text-slate-300">
             Claim a coupon before booking and bring the code with your appointment request.
           </p>
         </div>
         <Reveal>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {offers.map((offer) => (
-            <article key={offer.slug} className="group relative h-full overflow-hidden rounded-2xl bg-night p-6 text-white shadow-lift transition duration-300 hover:-translate-y-1">
-              <span aria-hidden="true" className="absolute -left-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-brand-pale" />
-              <span aria-hidden="true" className="absolute -right-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-brand-pale" />
+            <article key={offer.slug} className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-coal p-6 text-white shadow-lift transition duration-300 hover:-translate-y-1">
+              <span aria-hidden="true" className="absolute -left-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-night" />
+              <span aria-hidden="true" className="absolute -right-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-night" />
               <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-blue/30 blur-2xl transition duration-500 group-hover:bg-brand-blue/50" />
               <div className="relative">
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue text-white">
@@ -41,9 +41,9 @@ export function OffersSection() {
           ))}
 
           {/* User-added coupon (2026-11-25): no code, no invented conditions */}
-          <article className="group relative h-full overflow-hidden rounded-2xl bg-night p-6 text-white shadow-lift transition duration-300 hover:-translate-y-1">
-            <span aria-hidden="true" className="absolute -left-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-brand-pale" />
-            <span aria-hidden="true" className="absolute -right-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-brand-pale" />
+          <article className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-coal p-6 text-white shadow-lift transition duration-300 hover:-translate-y-1">
+            <span aria-hidden="true" className="absolute -left-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-night" />
+            <span aria-hidden="true" className="absolute -right-[13px] top-1/2 z-10 h-[26px] w-[26px] -translate-y-1/2 rounded-full bg-night" />
             <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-brand-blue/30 blur-2xl transition duration-500 group-hover:bg-brand-blue/50" />
             <div className="relative">
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-blue text-white">

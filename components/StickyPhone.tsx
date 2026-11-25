@@ -33,10 +33,10 @@ export function StickyPhone() {
       </div>
 
       {/* Sticky mobile Call / Book bar (v3.1) */}
-      <div className="fixed inset-x-0 bottom-0 z-[70] flex gap-2.5 border-t border-slate-200 bg-white/95 px-3.5 pb-[calc(10px+env(safe-area-inset-bottom))] pt-2.5 shadow-[0_-10px_28px_-14px_rgba(10,10,11,0.35)] backdrop-blur-md min-[861px]:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-[70] flex gap-2.5 border-t border-white/10 bg-night/95 px-3.5 pb-[calc(10px+env(safe-area-inset-bottom))] pt-2.5 shadow-[0_-10px_28px_-14px_rgba(10,10,11,0.35)] backdrop-blur-md min-[861px]:hidden">
         <a
           href={site.phoneHref}
-          className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-[11px] border-[1.5px] border-slate-300 bg-slate-100 font-heading text-[0.92rem] font-extrabold text-ink"
+          className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-[11px] border-[1.5px] border-white/15 bg-smoke font-heading text-[0.92rem] font-extrabold text-white"
         >
           <Phone size={16} /> Call Now
         </a>

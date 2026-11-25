@@ -27,7 +27,7 @@ export default function AreasWeServePage() {
         </a>
       </PageHero>
 
-      <section className="bg-white py-16">
+      <section className="bg-coal py-16">
         <div className="section-shell">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {statesServed.map((state) =>
@@ -35,7 +35,7 @@ export default function AreasWeServePage() {
                 <Link
                   key={state}
                   href="/areas-we-serve/charlotte/garage-door-repair"
-                  className="flex items-center gap-3 rounded-xl border border-brand-blue/40 bg-brand-pale p-4 font-bold transition hover:-translate-y-0.5 hover:border-brand-blue hover:shadow-crisp"
+                  className="flex items-center gap-3 rounded-xl border border-brand-blue/40 bg-smoke p-4 font-bold transition hover:-translate-y-0.5 hover:border-brand-blue hover:shadow-crisp"
                 >
                   <MapPin className="text-brand-blue" size={20} />
                   <span>{state}</span>
@@ -46,7 +46,7 @@ export default function AreasWeServePage() {
               ) : (
                 <div
                   key={state}
-                  className="flex items-center gap-3 rounded-xl border border-slate-200 p-4 font-bold"
+                  className="flex items-center gap-3 rounded-xl border border-white/10 p-4 font-bold"
                 >
                   <MapPin className="text-brand-blue" size={20} />
                   {state}

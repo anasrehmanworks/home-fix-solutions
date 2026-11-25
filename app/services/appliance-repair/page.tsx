@@ -61,7 +61,7 @@ export default function ApplianceRepairPage() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-night via-night/80 to-night/30" />
-        <div className="section-shell relative py-16 lg:py-20">
+        <div className="section-shell relative pb-16 pt-32 lg:pb-20 lg:pt-36">
           <Breadcrumbs items={[{ label: "Services", href: "/services" }, { label: "Appliance Repair" }]} dark />
           <div className="mt-8 max-w-3xl">
             <p className="eyebrow text-brand-ice">Appliance Repair</p>
@@ -83,7 +83,7 @@ export default function ApplianceRepairPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="bg-coal py-16">
         <div className="section-shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">
           <aside id="book" className="order-1 lg:order-2 lg:sticky lg:top-28 lg:self-start">
             <BookingForm compact />
@@ -91,14 +91,14 @@ export default function ApplianceRepairPage() {
 
           <article className="order-2 lg:order-1">
             <h2 className="font-display text-3xl font-semibold">Professional Appliance Repair</h2>
-            <p className="mt-5 leading-8 text-slate-700">
+            <p className="mt-5 leading-8 text-slate-200">
               When a household appliance stops working the way it should, the first step is a proper diagnosis. Home Fix Solution approaches appliance repair requests the same way as every other service on this site: inspect the issue, explain the likely cause in clear language, and discuss the most practical next step before any work begins.
             </p>
 
             <h2 className="mt-10 font-display text-3xl font-semibold">What This Service Can Include</h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {includes.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-xl border border-slate-200 p-4">
+                <div key={item} className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
                   <CheckCircle2 className="mt-0.5 shrink-0 text-brand-blue" size={20} />
                   <h3 className="font-black">{item}</h3>
                 </div>
@@ -108,7 +108,7 @@ export default function ApplianceRepairPage() {
             <h2 className="mt-10 font-display text-3xl font-semibold">Signs You Should Schedule Service</h2>
             <div className="mt-5 grid gap-3">
               {signs.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-xl bg-brand-pale p-4">
+                <div key={item} className="flex items-start gap-3 rounded-xl bg-coal p-4">
                   <ShieldCheck className="mt-0.5 shrink-0 text-brand-blue" size={20} />
                   <h3 className="font-bold leading-7">{item}</h3>
                 </div>
@@ -118,9 +118,9 @@ export default function ApplianceRepairPage() {
             <h2 className="mt-10 font-display text-3xl font-semibold">FAQ</h2>
             <div className="mt-5 grid gap-4">
               {faqs.map((faq) => (
-                <details key={faq.question} className="rounded-xl border border-slate-200 p-5">
+                <details key={faq.question} className="rounded-xl border border-white/10 p-5">
                   <summary className="cursor-pointer text-lg font-black">{faq.question}</summary>
-                  <p className="mt-3 leading-7 text-slate-600">{faq.answer}</p>
+                  <p className="mt-3 leading-7 text-slate-300">{faq.answer}</p>
                 </details>
               ))}
             </div>

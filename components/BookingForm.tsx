@@ -147,19 +147,19 @@ export function BookingForm({
           <span className="premium-icon"><CalendarClock size={22} /></span>
           <div className="min-w-0">
             <p className="step-pill w-fit">{step === 4 ? "Review" : `Step ${step} of 3`}</p>
-            <h2 className="mt-2 text-xl font-black text-ink">Book Service</h2>
+            <h2 className="mt-2 text-xl font-black text-white">Book Service</h2>
           </div>
         </div>
 
         <div className="flex items-center gap-0" aria-hidden="true">
           {[1, 2, 3].map((item) => (
             <div key={item} className="flex flex-1 items-center last:flex-none">
-              <span className={`grid h-[30px] w-[30px] shrink-0 place-items-center rounded-full border-2 font-heading text-[0.82rem] font-extrabold transition-all duration-300 ${displayStep > item ? "border-green-600 bg-green-600 text-white" : displayStep === item ? "border-brand-blue bg-brand-blue text-white shadow-[0_6px_14px_-6px_rgba(0,80,160,0.55)]" : "border-transparent bg-brand-pale text-slate-500"}`}>
+              <span className={`grid h-[30px] w-[30px] shrink-0 place-items-center rounded-full border-2 font-heading text-[0.82rem] font-extrabold transition-all duration-300 ${displayStep > item ? "border-brand-blue bg-brand-blue text-white" : displayStep === item ? "border-brand-blue bg-brand-blue text-white shadow-[0_6px_14px_-6px_rgba(0,80,160,0.55)]" : "border-transparent bg-white/10 text-slate-400"}`}>
                 {displayStep > item ? <Check size={15} /> : item}
               </span>
               {item < 3 && (
-                <span className="mx-[7px] h-[3px] flex-1 overflow-hidden rounded bg-brand-pale">
-                  <span className={`block h-full bg-green-600 transition-all duration-500 ${displayStep > item ? "w-full" : "w-0"}`} />
+                <span className="mx-[7px] h-[3px] flex-1 overflow-hidden rounded bg-white/10">
+                  <span className={`block h-full bg-brand-blue transition-all duration-500 ${displayStep > item ? "w-full" : "w-0"}`} />
                 </span>
               )}
             </div>
@@ -290,7 +290,7 @@ export function BookingForm({
                     </label>
                   ))}
                 </div>
-                <p className="text-xs font-semibold leading-5 text-slate-500">
+                <p className="text-xs font-semibold leading-5 text-slate-400">
                   Your requested time is subject to confirmation — we&apos;ll confirm your appointment by phone. Slots are requests, not guaranteed availability.
                 </p>
               </fieldset>
@@ -298,18 +298,18 @@ export function BookingForm({
           )}
 
           {step === 4 && (
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-5">
+            <div className="rounded-xl border border-white/10 bg-smoke p-4 sm:p-5">
               <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-sm">
                 {reviewOrder
                   .filter((key) => values[key])
                   .map((key) => (
                     <div key={key} className="contents">
-                      <dt className="pt-0.5 text-[0.74rem] font-extrabold uppercase tracking-[0.08em] text-slate-500">{reviewLabels[key]}</dt>
-                      <dd className="font-bold text-ink">{values[key]}</dd>
+                      <dt className="pt-0.5 text-[0.74rem] font-extrabold uppercase tracking-[0.08em] text-slate-400">{reviewLabels[key]}</dt>
+                      <dd className="font-bold text-white">{values[key]}</dd>
                     </div>
                   ))}
               </dl>
-              <p className="mt-4 text-xs font-semibold leading-5 text-slate-500">
+              <p className="mt-4 text-xs font-semibold leading-5 text-slate-400">
                 Your requested time is subject to confirmation — we&apos;ll confirm your appointment by phone.
               </p>
             </div>
@@ -340,7 +340,7 @@ export function BookingForm({
           </button>
         </div>
         {message && step === 4 && (
-          <p className={status === "sent" ? "text-sm font-bold text-green-700" : "text-sm font-bold text-brand-red"}>
+          <p className={status === "sent" ? "text-sm font-bold text-brand-sky" : "text-sm font-bold text-brand-red"}>
             {message}
           </p>
         )}
@@ -348,7 +348,7 @@ export function BookingForm({
 
       {toast && (
         <div className="toast-in fixed bottom-6 left-1/2 z-[300] flex max-w-[calc(100vw-2rem)] -translate-x-1/2 items-center gap-2.5 rounded-xl bg-charcoal px-5 py-3.5 text-center text-[0.92rem] font-bold text-white shadow-lift" role="status">
-          <Check size={17} className="shrink-0 text-green-400" />
+          <Check size={17} className="shrink-0 text-brand-sky" />
           {toast}
         </div>
       )}

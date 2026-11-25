@@ -18,7 +18,7 @@ export function ContactForm() {
   }
 
   return (
-    <form action={submit} className="grid gap-4 rounded-md border border-slate-200 bg-white p-5 shadow-crisp">
+    <form action={submit} className="grid gap-4 rounded-md border border-white/10 bg-coal p-5 shadow-crisp">
       <h2 className="text-xl font-black">Contact Home Fix Solution</h2>
       <label className="grid gap-1">
         <span className="label">Full Name</span>
@@ -40,7 +40,7 @@ export function ContactForm() {
         <Send size={17} />
         Request a Call
       </button>
-      {message && <p className="text-sm font-bold text-green-700">{message}</p>}
+      {message && <p className="text-sm font-bold text-brand-sky">{message}</p>}
     </form>
   );
 }

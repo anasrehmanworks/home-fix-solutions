@@ -61,7 +61,7 @@ export function ServiceRack({ items }: { items: RackItem[] }) {
             className={`flex items-center gap-3.5 rounded-xl border-[1.5px] px-4 py-3.5 text-left transition-all duration-300 lg:w-full ${
               i === active
                 ? "border-charcoal bg-charcoal text-white shadow-lift lg:translate-x-1"
-                : "border-slate-200 bg-white text-ink hover:border-slate-400 lg:hover:translate-x-1"
+                : "border-white/10 bg-coal text-white hover:border-white/25 lg:hover:translate-x-1"
             }`}
           >
             <span className={`hidden w-6 shrink-0 font-heading text-[0.8rem] font-black lg:block ${i === active ? "text-brand-sky" : "text-slate-400"}`}>

@@ -26,7 +26,7 @@ export function ServiceCards({ items, dark = false }: { items: ServiceCardItem[]
           className={`group overflow-hidden rounded-2xl border text-left shadow-sm transition duration-300 hover:-translate-y-1 ${
             dark
               ? "border-white/10 bg-smoke text-white hover:shadow-glow"
-              : "border-slate-200 bg-white hover:shadow-crisp"
+              : "border-white/10 bg-coal hover:shadow-crisp"
           }`}
           aria-label={`Open ${service.title} page`}
         >
@@ -48,7 +48,7 @@ export function ServiceCards({ items, dark = false }: { items: ServiceCardItem[]
               {service.title}
               <ArrowRight size={18} className="shrink-0 text-brand-blue transition duration-300 group-hover:translate-x-1" />
             </h3>
-            <p className={`mt-2 text-sm leading-6 ${dark ? "text-slate-300" : "text-slate-600"}`}>
+            <p className={`mt-2 text-sm leading-6 ${dark ? "text-slate-300" : "text-slate-300"}`}>
               {service.description}
             </p>
           </div>

@@ -135,6 +135,14 @@ export function Footer() {
         </div>
       </div>
 
+      <div aria-hidden="true" className="select-none overflow-hidden px-2 pb-2 pt-4">
+        <p
+          className="whitespace-nowrap text-center font-heading text-[11.5vw] font-black leading-[0.95] tracking-tight text-transparent"
+          style={{ WebkitTextStroke: "1px rgba(127, 179, 236, 0.22)" }}
+        >
+          HOME FIX SOLUTION
+        </p>
+      </div>
       <div className="border-t border-white/10 py-4 text-center text-xs text-slate-400">
         &copy; 2026 Home Fix Solution. All Rights Reserved.
       </div>

@@ -18,7 +18,7 @@ export function PageHero({
     <section className="relative overflow-hidden bg-night text-white">
       <div className="absolute -left-24 top-0 h-64 w-64 rounded-full bg-brand-blue/25 blur-3xl" />
       <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-brand-sky/15 blur-3xl" />
-      <div className="section-shell relative py-14 lg:py-16">
+      <div className="section-shell relative pb-14 pt-32 lg:pb-16 lg:pt-36">
         <Breadcrumbs dark items={crumbs} />
         <div className="mt-8 max-w-3xl">
           <p className="eyebrow text-brand-ice">{eyebrow}</p>

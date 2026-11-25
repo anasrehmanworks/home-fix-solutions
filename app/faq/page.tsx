@@ -57,17 +57,17 @@ export default function FaqPage() {
           <Link href="/contact#book" className="btn-ghost-light">Book Service</Link>
         </div>
       </PageHero>
-      <section className="bg-brand-pale py-20">
+      <section className="bg-coal py-20">
         <div className="section-shell max-w-4xl">
           <div className="grid content-start gap-4">
             {faqs.map((faq, i) => (
               <Reveal key={faq.q} delay={Math.min(i, 3) * 80}>
-                <details className="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm" open={i === 0}>
+                <details className="group rounded-xl border border-white/10 bg-coal p-5 shadow-sm" open={i === 0}>
                   <summary className="flex cursor-pointer list-none items-center gap-3.5 text-lg font-black [&::-webkit-details-marker]:hidden">
                     <span className="flex-1">{faq.q}</span>
-                    <span className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-full border border-slate-200 bg-slate-50 text-lg font-black text-brand-blue transition-transform duration-300 group-open:rotate-45">+</span>
+                    <span className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-full border border-white/10 bg-smoke text-lg font-black text-brand-blue transition-transform duration-300 group-open:rotate-45">+</span>
                   </summary>
-                  <p className="mt-3 leading-7 text-slate-600">{faq.a}</p>
+                  <p className="mt-3 leading-7 text-slate-300">{faq.a}</p>
                 </details>
               </Reveal>
             ))}

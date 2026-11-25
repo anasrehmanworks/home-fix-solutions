@@ -41,7 +41,7 @@ export default function ServicesPage() {
   return (
     <>
       <JsonLd data={localBusinessSchema("/services")} />
-      <section className="relative overflow-hidden bg-night py-20 text-white">
+      <section className="relative overflow-hidden bg-night pb-20 pt-36 text-white">
         <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-brand-blue/25 blur-3xl" />
         <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-brand-sky/15 blur-3xl" />
         <div className="section-shell relative max-w-3xl">
@@ -61,7 +61,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-coal py-20">
         <div className="section-shell">
           <ServiceCards items={services} />
         </div>

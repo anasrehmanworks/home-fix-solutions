@@ -15,9 +15,9 @@ export default function PrivacyPolicyPage() {
         eyebrow="Legal"
         title="Privacy Policy"
       />
-      <section className="bg-white py-16">
+      <section className="bg-coal py-16">
         <div className="section-shell max-w-4xl">
-          <div className="grid gap-5 leading-8 text-slate-700">
+          <div className="grid gap-5 leading-8 text-slate-200">
             <p>Home Fix Solution collects information submitted through booking, contact, and technician application forms so we can respond to requests, schedule service, and review applications.</p>
             <p>Information may include names, phone numbers, email addresses, service addresses, appointment preferences, uploaded documents, and application details. This information is used to respond to service requests, customer messages, and technician applications.</p>
             <p>We do not sell personal information. Form data should be connected to your chosen CRM, email inbox, or secure backend before production launch.</p>

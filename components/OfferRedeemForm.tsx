@@ -110,7 +110,7 @@ export function OfferRedeemForm({ offer }: OfferFormProps) {
               </label>
             ))}
           </div>
-          <p className="text-xs font-semibold leading-5 text-slate-500">
+          <p className="text-xs font-semibold leading-5 text-slate-400">
             Your requested time is subject to confirmation — we&apos;ll confirm your appointment by phone.
           </p>
         </fieldset>
@@ -119,7 +119,7 @@ export function OfferRedeemForm({ offer }: OfferFormProps) {
         <Send size={17} />
         Submit Offer Request
       </button>
-      {message && <p className="text-sm font-bold text-green-700">{message}</p>}
+      {message && <p className="text-sm font-bold text-brand-sky">{message}</p>}
     </form>
   );
 }

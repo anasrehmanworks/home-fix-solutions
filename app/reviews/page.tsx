@@ -29,7 +29,7 @@ export default function ReviewsPage() {
             {allReviews.map((review, i) => (
               <Reveal key={`${review.name}-${review.service}`} delay={(i % 3) * 110}>
                 <figure className="dark-card h-full p-6 transition duration-300 hover:-translate-y-1 hover:bg-white/[0.07]">
-                  <div className="mb-4 flex gap-1 text-brand-gold">
+                  <div className="mb-4 flex gap-1 text-brand-sky">
                     {Array.from({ length: 5 }).map((_, s) => (
                       <Star key={s} size={18} fill="currentColor" />
                     ))}

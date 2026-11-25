@@ -9,7 +9,7 @@ export function Breadcrumbs({
 }) {
   const linkClass = dark ? "text-brand-ice hover:underline" : "text-brand-blue hover:underline";
   return (
-    <nav aria-label="Breadcrumb" className={`text-sm font-bold ${dark ? "text-slate-300" : "text-slate-600"}`}>
+    <nav aria-label="Breadcrumb" className={`text-sm font-bold ${dark ? "text-slate-300" : "text-slate-300"}`}>
       <ol className="flex flex-wrap items-center gap-2">
         <li><Link href="/" className={linkClass}>Home</Link></li>
         {items.map((item, index) => (

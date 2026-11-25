@@ -39,13 +39,13 @@ export function CareersForm() {
         <div>
           <p className="step-pill w-fit">Step {step} of 2</p>
           <h2 className="mt-2 text-2xl font-black">Apply As A Technician</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-600">
+          <p className="mt-2 text-sm leading-6 text-slate-300">
             Submit your technician application for garage door, air duct cleaning, chimney, plumbing, electrician, locksmith, roofing, and HVAC service work.
           </p>
         </div>
       </div>
 
-      <div className="h-2 overflow-hidden rounded-full bg-brand-pale">
+      <div className="h-2 overflow-hidden rounded-full bg-coal">
         <div className="h-full rounded-full bg-brand-blue transition-all duration-300" style={{ width: step === 1 ? "50%" : "100%" }} />
       </div>
 
@@ -107,12 +107,12 @@ export function CareersForm() {
               <input className="field file:mr-3 file:rounded-md file:border-0 file:bg-brand-blue file:px-3 file:py-2 file:text-sm file:font-bold file:text-white" name="licenseUpload" type="file" required />
             </label>
           </div>
-          <div className="rounded-md border border-slate-200 bg-brand-pale p-4">
+          <div className="rounded-md border border-white/10 bg-coal p-4">
             <h3 className="font-black">Technician Commission Information</h3>
             <div className="mt-4 grid gap-3 sm:grid-cols-3">
               {commissions.map((item) => (
-                <div key={item.service} className="rounded-md bg-white p-4 text-center shadow-sm">
-                  <p className="text-sm font-black text-slate-600">{item.service}</p>
+                <div key={item.service} className="rounded-md bg-coal p-4 text-center shadow-sm">
+                  <p className="text-sm font-black text-slate-300">{item.service}</p>
                   <p className="mt-2 text-2xl font-black text-brand-blue">{item.rate}</p>
                 </div>
               ))}
@@ -149,7 +149,7 @@ export function CareersForm() {
           </button>
         )}
       </div>
-      {message && <p className="text-sm font-bold text-green-700">{message}</p>}
+      {message && <p className="text-sm font-bold text-brand-sky">{message}</p>}
     </form>
   );
 }
