@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Manrope, Outfit } from "next/font/google";
+import { Archivo, Manrope } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { StickyPhone } from "@/components/StickyPhone";
 import { JsonLd } from "@/components/JsonLd";
+import { ServiceTransitionProvider } from "@/components/ServiceTransition";
 import { localBusinessSchema, site } from "@/lib/site";
 import "./globals.css";
 
@@ -14,10 +15,11 @@ const manrope = Manrope({
   variable: "--font-manrope"
 });
 
-const outfit = Outfit({
+const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-heading"
+  variable: "--font-display",
+  weight: ["600", "700", "800", "900"]
 });
 
 export const metadata: Metadata = {
@@ -54,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       </head>
       <body
-        className={`${manrope.variable} ${outfit.variable}`}
+        className={`${manrope.variable} ${archivo.variable}`}
         suppressHydrationWarning
       >
         <noscript>
@@ -67,11 +69,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <JsonLd data={localBusinessSchema()} />
 
-        <Header />
+        <ServiceTransitionProvider>
+          <Header />
 
-        <main>{children}</main>
+          <main>{children}</main>
 
-        <Footer />
+          <Footer />
+        </ServiceTransitionProvider>
 
         <StickyPhone />
 

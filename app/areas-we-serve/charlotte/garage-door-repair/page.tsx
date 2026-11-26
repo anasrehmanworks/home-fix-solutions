@@ -183,32 +183,36 @@ export default function CharlotteGarageDoorRepairPage() {
         ]}
       />
 
-      {/* Breadcrumbs */}
-      <section className="bg-brand-pale py-6">
-        <div className="section-shell">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-night text-white">
+        <Image
+          src="/site-images/garage-door-new-installation.jpg"
+          alt="Professional garage door service in Charlotte, NC"
+          fill
+          priority
+          className="object-cover opacity-35"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-night via-night/82 to-night/35" />
+        <div className="section-shell relative pb-14 pt-32 lg:pb-16 lg:pt-36">
           <Breadcrumbs
+            dark
             items={[
               { label: "Areas We Serve", href: "/areas-we-serve" },
               { label: "Charlotte, NC" },
               { label: "Garage Door Repair" }
             ]}
           />
-        </div>
-      </section>
-
-      {/* Hero */}
-      <section className="bg-white py-12 md:py-16">
-        <div className="section-shell grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-          <div>
-            <p className="mb-3 text-sm font-black uppercase tracking-wide text-brand-red">
+          <div className="mt-10 max-w-3xl">
+            <p className="eyebrow text-brand-ice">
               Garage Door Repair in Charlotte
             </p>
 
-            <h1 className="text-4xl font-black leading-tight tracking-tight text-ink md:text-5xl">
+            <h1 className="mt-4 font-display text-5xl font-semibold leading-tight md:text-6xl">
               Garage Door Repair in Charlotte, NC
             </h1>
 
-            <p className="mt-5 text-lg leading-8 text-slate-600">
+            <p className="mt-5 text-lg leading-8 text-slate-200">
               A malfunctioning garage door can quickly become a major
               inconvenience for homeowners and businesses. Whether your door
               is stuck, making unusual noises, moving unevenly, or refusing to
@@ -216,7 +220,7 @@ export default function CharlotteGarageDoorRepairPage() {
               dependable operation.
             </p>
 
-            <p className="mt-5 text-base leading-8 text-slate-600">
+            <p className="mt-5 text-base leading-8 text-slate-300">
               Home Fix Solution provides reliable Garage Door Repair in
               Charlotte for residential and commercial properties. Our
               technicians can help diagnose and repair common problems
@@ -224,13 +228,13 @@ export default function CharlotteGarageDoorRepairPage() {
               openers, and other components.
             </p>
 
-            <p className="mt-5 text-base leading-8 text-slate-600">
+            <p className="mt-5 text-base leading-8 text-slate-300">
               Whether you need a routine repair or immediate assistance with
               an unexpected breakdown, we are here to help you get your garage
               door working properly again.
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={site.phoneHref}
                 className="btn-primary"
@@ -241,36 +245,25 @@ export default function CharlotteGarageDoorRepairPage() {
                 <span>{site.phone}</span>
               </a>
 
-              <a href="#book" className="btn-secondary">
-  Book Garage Door Repair
-</a>
+              <a href="#book" className="btn-ghost-light">
+                Book Garage Door Repair
+              </a>
             </div>
-          </div>
-
-          <div className="relative min-h-[330px] overflow-hidden rounded-md">
-            <Image
-              src="/site-images/garage-door-new-installation.jpg"
-              alt="Professional garage door service in Charlotte, NC"
-              fill
-              priority
-              className="object-cover"
-              sizes="(min-width: 1024px) 45vw, 100vw"
-            />
           </div>
         </div>
       </section>
 
       {/* Main content + booking */}
-      <section className="bg-white pb-16">
+      <section className="bg-coal pb-16">
         <div className="section-shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">
           <article>
             {/* Reliable Services */}
             <section>
-              <h2 className="text-3xl font-black text-ink md:text-4xl">
+              <h2 className="text-3xl font-black text-white md:text-4xl">
                 Reliable Garage Door Repair Services in Charlotte
               </h2>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Your garage door depends on multiple components working
                 together correctly. Springs help balance the door, cables
                 support its movement, rollers guide it along the tracks, and
@@ -278,7 +271,7 @@ export default function CharlotteGarageDoorRepairPage() {
                 becomes worn or damaged, it can affect the entire system.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Home Fix Solution provides professional garage door repair
                 services for a wide range of issues, including:
               </p>
@@ -287,20 +280,20 @@ export default function CharlotteGarageDoorRepairPage() {
                 {repairServices.map((item) => (
                   <div
                     key={item}
-                    className="flex items-start gap-3 rounded-md border border-slate-200 bg-white p-4"
+                    className="flex items-start gap-3 rounded-md border border-white/10 bg-coal p-4"
                   >
                     <CheckCircle2
                       className="mt-0.5 shrink-0 text-brand-blue"
                       size={20}
                     />
-                    <span className="font-semibold leading-6 text-slate-700">
+                    <span className="font-semibold leading-6 text-slate-200">
                       {item}
                     </span>
                   </div>
                 ))}
               </div>
 
-              <p className="mt-6 text-base leading-8 text-slate-700">
+              <p className="mt-6 text-base leading-8 text-slate-200">
                 Our technicians can inspect the garage door system and
                 determine the likely cause of the problem before recommending
                 the appropriate repair.
@@ -309,18 +302,18 @@ export default function CharlotteGarageDoorRepairPage() {
 
             {/* Emergency */}
             <section className="mt-14">
-              <div className="rounded-lg border border-slate-200 bg-brand-pale p-6 md:p-8">
+              <div className="rounded-lg border border-white/10 bg-coal p-6 md:p-8">
                 <div className="flex items-start gap-4">
-                  <div className="rounded-md bg-white p-3 shadow-sm">
-                    <Clock3 className="text-brand-red" size={24} />
+                  <div className="rounded-md bg-coal p-3 shadow-sm">
+                    <Clock3 className="text-brand-blue" size={24} />
                   </div>
 
                   <div>
-                    <h2 className="text-3xl font-black text-ink">
+                    <h2 className="text-3xl font-black text-white">
                       Emergency Garage Door Repair
                     </h2>
 
-                    <p className="mt-4 text-base leading-8 text-slate-700">
+                    <p className="mt-4 text-base leading-8 text-slate-200">
                       Some garage door failures require prompt attention. A
                       door that is stuck open can create a security concern,
                       while a door that will not open may prevent you from
@@ -329,12 +322,12 @@ export default function CharlotteGarageDoorRepairPage() {
                   </div>
                 </div>
 
-                <p className="mt-6 text-base leading-8 text-slate-700">
+                <p className="mt-6 text-base leading-8 text-slate-200">
                   Home Fix Solution provides Emergency Garage Door Repair for
                   urgent situations in Charlotte and surrounding communities.
                 </p>
 
-                <p className="mt-5 font-black text-ink">
+                <p className="mt-5 font-black text-white">
                   Emergency garage door problems may include:
                 </p>
 
@@ -342,20 +335,20 @@ export default function CharlotteGarageDoorRepairPage() {
                   {emergencyProblems.map((item) => (
                     <div
                       key={item}
-                      className="flex items-start gap-3 rounded-md bg-white p-4"
+                      className="flex items-start gap-3 rounded-md bg-coal p-4"
                     >
                       <ShieldCheck
-                        className="mt-0.5 shrink-0 text-brand-red"
+                        className="mt-0.5 shrink-0 text-brand-blue"
                         size={20}
                       />
-                      <span className="font-semibold text-slate-700">
+                      <span className="font-semibold text-slate-200">
                         {item}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <p className="mt-6 text-sm leading-7 text-slate-600">
+                <p className="mt-6 text-sm leading-7 text-slate-300">
                   Garage door springs and cables can be under significant
                   tension. Trying to repair these components without proper
                   knowledge and equipment can result in additional damage or
@@ -368,35 +361,35 @@ export default function CharlotteGarageDoorRepairPage() {
             {/* Residential */}
             <section className="mt-14">
               <div className="flex items-center gap-3">
-                <div className="rounded-md bg-brand-pale p-3">
+                <div className="rounded-md bg-coal p-3">
                   <Home className="text-brand-blue" size={24} />
                 </div>
 
-                <h2 className="text-3xl font-black text-ink md:text-4xl">
+                <h2 className="text-3xl font-black text-white md:text-4xl">
                   Residential Garage Door Repair in Charlotte
                 </h2>
               </div>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 For many homeowners, the garage is one of the most frequently
                 used entrances to the property. A reliable garage door makes
                 it easier to access your vehicle, storage area, and home.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 When the door becomes noisy, slow, uneven, or difficult to
                 operate, the problem should not be ignored.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Our Garage Door Repair in Charlotte services can help
                 homeowners address problems involving:
               </p>
 
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                <div className="rounded-md border border-slate-200 p-5">
-                  <h3 className="font-black text-ink">Garage Door Springs</h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                <div className="rounded-md border border-white/10 p-5">
+                  <h3 className="font-black text-white">Garage Door Springs</h3>
+                  <p className="mt-2 leading-7 text-slate-300">
                     Garage door springs support much of the door's weight
                     during opening and closing. A broken spring can make the
                     door extremely heavy or prevent it from operating
@@ -404,9 +397,9 @@ export default function CharlotteGarageDoorRepairPage() {
                   </p>
                 </div>
 
-                <div className="rounded-md border border-slate-200 p-5">
-                  <h3 className="font-black text-ink">Garage Door Cables</h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                <div className="rounded-md border border-white/10 p-5">
+                  <h3 className="font-black text-white">Garage Door Cables</h3>
+                  <p className="mt-2 leading-7 text-slate-300">
                     Cables work with the spring and lifting system to help move
                     the door. If a cable becomes frayed, loose, or broken, the
                     garage door may become unstable or stop functioning
@@ -414,18 +407,18 @@ export default function CharlotteGarageDoorRepairPage() {
                   </p>
                 </div>
 
-                <div className="rounded-md border border-slate-200 p-5">
-                  <h3 className="font-black text-ink">Garage Door Rollers</h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                <div className="rounded-md border border-white/10 p-5">
+                  <h3 className="font-black text-white">Garage Door Rollers</h3>
+                  <p className="mt-2 leading-7 text-slate-300">
                     Worn rollers can cause excessive noise, vibration, or
                     uneven movement. Replacing damaged rollers can help the
                     door move more smoothly along its tracks.
                   </p>
                 </div>
 
-                <div className="rounded-md border border-slate-200 p-5">
-                  <h3 className="font-black text-ink">Garage Door Tracks</h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                <div className="rounded-md border border-white/10 p-5">
+                  <h3 className="font-black text-white">Garage Door Tracks</h3>
+                  <p className="mt-2 leading-7 text-slate-300">
                     Bent, damaged, or misaligned tracks can prevent the door
                     from moving correctly. Professional inspection can help
                     determine whether adjustment, repair, or replacement is
@@ -433,9 +426,9 @@ export default function CharlotteGarageDoorRepairPage() {
                   </p>
                 </div>
 
-                <div className="rounded-md border border-slate-200 p-5">
-                  <h3 className="font-black text-ink">Garage Door Openers</h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                <div className="rounded-md border border-white/10 p-5">
+                  <h3 className="font-black text-white">Garage Door Openers</h3>
+                  <p className="mt-2 leading-7 text-slate-300">
                     If your automatic garage door opener is not responding,
                     operates inconsistently, or makes unusual sounds, the
                     opener may require troubleshooting or repair.
@@ -447,28 +440,28 @@ export default function CharlotteGarageDoorRepairPage() {
             {/* Commercial */}
             <section className="mt-14">
               <div className="flex items-center gap-3">
-                <div className="rounded-md bg-brand-pale p-3">
+                <div className="rounded-md bg-coal p-3">
                   <Building2 className="text-brand-blue" size={24} />
                 </div>
 
-                <h2 className="text-3xl font-black text-ink md:text-4xl">
+                <h2 className="text-3xl font-black text-white md:text-4xl">
                   Commercial Garage Door Repair in Charlotte
                 </h2>
               </div>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Commercial properties often rely on garage doors for loading
                 areas, warehouses, service facilities, storage spaces, and
                 other daily operations.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 When a commercial garage door stops working, it can interfere
                 with deliveries, employees, equipment, and business
                 activities.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Home Fix Solution provides Commercial Garage Door Repair for
                 businesses and commercial properties in Charlotte. We can
                 assist with common problems involving commercial overhead
@@ -476,7 +469,7 @@ export default function CharlotteGarageDoorRepairPage() {
                 cables, tracks, and other components.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Prompt attention to garage door problems can help businesses
                 minimize disruptions and maintain convenient access to their
                 facilities.
@@ -486,22 +479,22 @@ export default function CharlotteGarageDoorRepairPage() {
             {/* Signs */}
             <section className="mt-14">
               <div className="flex items-center gap-3">
-                <div className="rounded-md bg-brand-pale p-3">
-                  <Wrench className="text-brand-red" size={24} />
+                <div className="rounded-md bg-coal p-3">
+                  <Wrench className="text-brand-blue" size={24} />
                 </div>
 
-                <h2 className="text-3xl font-black text-ink md:text-4xl">
+                <h2 className="text-3xl font-black text-white md:text-4xl">
                   Common Signs Your Garage Door Needs Repair
                 </h2>
               </div>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Garage door problems are not always sudden. In many cases,
                 your system may show warning signs before a major failure
                 occurs.
               </p>
 
-              <p className="mt-5 font-black text-ink">
+              <p className="mt-5 font-black text-white">
                 Contact a professional if you notice:
               </p>
 
@@ -509,20 +502,20 @@ export default function CharlotteGarageDoorRepairPage() {
                 {warningSigns.map((item) => (
                   <div
                     key={item}
-                    className="flex items-start gap-3 rounded-md bg-brand-pale p-4"
+                    className="flex items-start gap-3 rounded-md bg-coal p-4"
                   >
                     <ShieldCheck
-                      className="mt-0.5 shrink-0 text-brand-red"
+                      className="mt-0.5 shrink-0 text-brand-blue"
                       size={20}
                     />
-                    <span className="font-semibold leading-6 text-slate-700">
+                    <span className="font-semibold leading-6 text-slate-200">
                       {item}
                     </span>
                   </div>
                 ))}
               </div>
 
-              <p className="mt-6 text-base leading-8 text-slate-700">
+              <p className="mt-6 text-base leading-8 text-slate-200">
                 Addressing these signs early may help prevent a small problem
                 from becoming a more expensive or disruptive repair.
               </p>
@@ -530,11 +523,11 @@ export default function CharlotteGarageDoorRepairPage() {
 
             {/* Why Choose */}
             <section className="mt-14">
-              <h2 className="text-3xl font-black text-ink md:text-4xl">
+              <h2 className="text-3xl font-black text-white md:text-4xl">
                 Why Choose Home Fix Solution?
               </h2>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Choosing the right garage door service provider can make the
                 repair process easier and more convenient. Home Fix Solution
                 serves residential and commercial customers with a focus on
@@ -542,55 +535,55 @@ export default function CharlotteGarageDoorRepairPage() {
               </p>
 
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                <div className="rounded-md border border-slate-200 p-5">
-                  <h3 className="font-black text-ink">
+                <div className="rounded-md border border-white/10 p-5">
+                  <h3 className="font-black text-white">
                     Experienced Technicians
                   </h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                  <p className="mt-2 leading-7 text-slate-300">
                     Garage doors contain several mechanical and electrical
                     components. Our technicians can evaluate common problems
                     and determine what may be affecting your door's operation.
                   </p>
                 </div>
 
-                <div className="rounded-md border border-slate-200 p-5">
-                  <h3 className="font-black text-ink">
+                <div className="rounded-md border border-white/10 p-5">
+                  <h3 className="font-black text-white">
                     Residential and Commercial Service
                   </h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                  <p className="mt-2 leading-7 text-slate-300">
                     We provide solutions for homeowners, businesses, and
                     commercial properties with different types of garage doors
                     and operating systems.
                   </p>
                 </div>
 
-                <div className="rounded-md border border-slate-200 p-5">
-                  <h3 className="font-black text-ink">
+                <div className="rounded-md border border-white/10 p-5">
+                  <h3 className="font-black text-white">
                     Convenient Scheduling
                   </h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                  <p className="mt-2 leading-7 text-slate-300">
                     We understand that garage door problems can interrupt your
                     daily routine. Our scheduling options make it easier to
                     arrange professional service.
                   </p>
                 </div>
 
-                <div className="rounded-md border border-slate-200 p-5">
-                  <h3 className="font-black text-ink">
+                <div className="rounded-md border border-white/10 p-5">
+                  <h3 className="font-black text-white">
                     Wide Service Coverage
                   </h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                  <p className="mt-2 leading-7 text-slate-300">
                     Home Fix Solution serves customers across more than 30
                     U.S. states, providing home and property services to
                     customers throughout our service network.
                   </p>
                 </div>
 
-                <div className="rounded-md border border-slate-200 p-5 sm:col-span-2">
-                  <h3 className="font-black text-ink">
+                <div className="rounded-md border border-white/10 p-5 sm:col-span-2">
+                  <h3 className="font-black text-white">
                     Focus on Safe Operation
                   </h3>
-                  <p className="mt-2 leading-7 text-slate-600">
+                  <p className="mt-2 leading-7 text-slate-300">
                     Garage doors are heavy mechanical systems. Professional
                     inspection and repair can help address problems while
                     keeping safe operation in mind.
@@ -601,29 +594,29 @@ export default function CharlotteGarageDoorRepairPage() {
 
             {/* Charlotte */}
             <section className="mt-14">
-              <h2 className="text-3xl font-black text-ink md:text-4xl">
+              <h2 className="text-3xl font-black text-white md:text-4xl">
                 Serving Charlotte Homeowners and Businesses
               </h2>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Charlotte is home to a wide variety of residential
                 neighborhoods, businesses, commercial properties, and
                 facilities that depend on properly functioning garage doors.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 From residential garages to commercial loading areas, garage
                 doors provide important access to properties every day.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Home Fix Solution helps customers throughout Charlotte with
                 common garage door problems, including damaged springs, broken
                 cables, worn rollers, track issues, opener problems, and other
                 operating concerns.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 If you are experiencing an unexpected breakdown, our Emergency
                 Garage Door Repair service can help you address urgent
                 problems that affect access or normal operation.
@@ -632,25 +625,25 @@ export default function CharlotteGarageDoorRepairPage() {
 
             {/* Timely Repairs */}
             <section className="mt-14">
-              <h2 className="text-3xl font-black text-ink md:text-4xl">
+              <h2 className="text-3xl font-black text-white md:text-4xl">
                 Protect Your Garage Door With Timely Repairs
               </h2>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Regular attention can help keep your garage door operating
                 reliably. If you notice unusual sounds, slow movement, visible
                 damage, or changes in how the door opens and closes, it may be
                 time to have the system inspected.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Ignoring a developing problem can sometimes place additional
                 stress on other components. For example, a damaged roller or
                 misaligned track may affect the way the door moves, while a
                 worn spring can place additional strain on the opener.
               </p>
 
-              <p className="mt-5 text-base leading-8 text-slate-700">
+              <p className="mt-5 text-base leading-8 text-slate-200">
                 Professional inspection and repair can help identify the
                 problem and determine the appropriate solution.
               </p>
@@ -660,7 +653,7 @@ export default function CharlotteGarageDoorRepairPage() {
 
             {/* FAQ */}
             <section className="mt-14">
-              <h2 className="text-3xl font-black text-ink md:text-4xl">
+              <h2 className="text-3xl font-black text-white md:text-4xl">
                 Frequently Asked Questions
               </h2>
 
@@ -668,13 +661,13 @@ export default function CharlotteGarageDoorRepairPage() {
                 {faqs.map((faq) => (
                   <details
                     key={faq.question}
-                    className="group rounded-md border border-slate-200 bg-white p-5"
+                    className="group rounded-md border border-white/10 bg-coal p-5"
                   >
-                    <summary className="cursor-pointer list-none pr-8 text-lg font-black text-ink">
+                    <summary className="cursor-pointer list-none pr-8 text-lg font-black text-white">
                       {faq.question}
                     </summary>
 
-                    <p className="mt-4 leading-7 text-slate-600">
+                    <p className="mt-4 leading-7 text-slate-300">
                       {faq.answer}
                     </p>
                   </details>

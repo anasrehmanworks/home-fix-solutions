@@ -5,7 +5,7 @@ import { useState } from "react";
 import { getServicesByCategory, serviceCategories, statesServed } from "@/lib/site";
 import type { ServiceCategory } from "@/lib/site";
 
-const slots = ["8:00 AM - 10:00 AM", "10:00 AM - 12:00 PM", "12:00 PM - 2:00 PM", "2:00 PM - 4:00 PM", "4:00 PM - 6:00 PM", "Emergency Service"];
+const slots = ["8:00 AM – 10:00 AM", "10:00 AM – 12:00 PM", "12:00 PM – 2:00 PM", "2:00 PM – 4:00 PM", "4:00 PM – 6:00 PM", "Emergency Service"];
 
 type OfferFormProps = {
   offer: {
@@ -101,7 +101,7 @@ export function OfferRedeemForm({ offer }: OfferFormProps) {
           <input className="field" name="preferredDate" type="date" required />
         </label>
         <fieldset className="grid gap-3 md:col-span-2">
-          <legend className="label mb-2">Available Appointment Slots</legend>
+          <legend className="label mb-2">Requested Time Slot</legend>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {slots.map((slot) => (
               <label key={slot} className="slot-card">
@@ -110,13 +110,16 @@ export function OfferRedeemForm({ offer }: OfferFormProps) {
               </label>
             ))}
           </div>
+          <p className="text-xs font-semibold leading-5 text-slate-400">
+            We&apos;ll call you within 10 minutes. Don&apos;t worry!
+          </p>
         </fieldset>
       </div>
       <button className="btn-primary">
         <Send size={17} />
         Submit Offer Request
       </button>
-      {message && <p className="text-sm font-bold text-green-700">{message}</p>}
+      {message && <p className="text-sm font-bold text-brand-sky">{message}</p>}
     </form>
   );
 }

@@ -1,8 +1,8 @@
 import { Clock, MapPinned, Phone } from "lucide-react";
 import { BookingForm } from "@/components/BookingForm";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContactForm } from "@/components/ContactForm";
 import { JsonLd } from "@/components/JsonLd";
+import { PageHero } from "@/components/PageHero";
 import { createMetadata, localBusinessSchema, site, statesServed } from "@/lib/site";
 
 export const metadata = createMetadata({
@@ -17,27 +17,20 @@ export default function ContactPage() {
     <>
       <JsonLd data={localBusinessSchema("/contact")} />
 
-      <section className="bg-brand-pale py-10">
+      <PageHero
+        crumbs={[{ label: "Contact" }]}
+        eyebrow="Contact"
+        title="Contact Home Fix Solution"
+        intro="Call, message, or book service for garage door repair and installation, air duct cleaning, chimney cleaning, plumbing, electrician, locksmith, roofing, or HVAC requests."
+      />
+
+      <section className="bg-coal py-16">
         <div className="section-shell">
-          <Breadcrumbs items={[{ label: "Contact" }]} />
-        </div>
-      </section>
-
-      <section className="bg-white py-16">
-        <div className="section-shell">
-          <h1 className="text-4xl font-black">
-            Contact Home Fix Solution
-          </h1>
-
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-            Call, message, or book service for garage door repair and
-            installation, air duct cleaning, chimney cleaning, plumbing,
-            electrician, locksmith, roofing, or HVAC requests.
-          </p>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <div className="rounded-md border border-slate-200 p-6">
-              <Phone className="text-brand-red" />
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="rounded-2xl border border-white/10 p-6 transition hover:-translate-y-0.5 hover:shadow-crisp">
+              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-coal text-brand-blue">
+                <Phone size={21} />
+              </span>
               <h2 className="mt-4 text-xl font-black">Phone Number</h2>
               <a
                 href={site.phoneHref}
@@ -47,33 +40,36 @@ export default function ContactPage() {
               </a>
             </div>
 
-            <div className="rounded-md border border-slate-200 p-6">
-              <Clock className="text-brand-red" />
+            <div className="rounded-2xl border border-white/10 p-6 transition hover:-translate-y-0.5 hover:shadow-crisp">
+              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-coal text-brand-blue">
+                <Clock size={21} />
+              </span>
               <h2 className="mt-4 text-xl font-black">Business Hours</h2>
-              <p className="mt-2 leading-7 text-slate-600">
+              <p className="mt-2 leading-7 text-slate-300">
                 Monday-Saturday: 8:00 AM-7:00 PM
                 <br />
                 Emergency service requests handled when available.
               </p>
             </div>
 
-            <div className="rounded-md border border-slate-200 p-6">
-              <MapPinned className="text-brand-red" />
+            <div className="rounded-2xl border border-white/10 p-6 transition hover:-translate-y-0.5 hover:shadow-crisp">
+              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-coal text-brand-blue">
+                <MapPinned size={21} />
+              </span>
               <h2 className="mt-4 text-xl font-black">Service Areas</h2>
-              <p className="mt-2 leading-7 text-slate-600">
+              <p className="mt-2 leading-7 text-slate-300">
                 Serving 30+ states including{" "}
                 {statesServed.slice(0, 5).join(", ")} and more.
               </p>
             </div>
           </div>
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+          <div className="mt-12 grid gap-8 lg:grid-cols-2">
             <ContactForm />
 
-            <div className="grid gap-6">
-
+            <div className="grid content-start gap-6">
               {/* Google Map */}
-              <div className="overflow-hidden rounded-md border border-slate-200 shadow-sm">
+              <div className="overflow-hidden rounded-2xl border border-white/10 shadow-sm">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d208642.4835825671!2d-80.98696864687537!3d35.205502342025646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541fc4fc381a81%3A0x884650e6bf43d164!2sCharlotte%2C%20NC%2C%20USA!5e0!3m2!1sen!2s!4v1786752084025!5m2!1sen!2s"
                   width="100%"
@@ -86,10 +82,9 @@ export default function ContactPage() {
                 />
               </div>
 
-              <div id="book">
+              <div id="book" className="scroll-mt-28">
                 <BookingForm />
               </div>
-
             </div>
           </div>
         </div>

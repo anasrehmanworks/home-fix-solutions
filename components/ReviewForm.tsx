@@ -73,19 +73,19 @@ export function ReviewForm() {
           <Send size={17} />
           Submit Review
         </button>
-        {message && <p className="text-sm font-bold text-green-700">{message}</p>}
+        {message && <p className="text-sm font-bold text-brand-sky">{message}</p>}
       </form>
 
       <div className="grid gap-4">
         {reviews.map((review, index) => (
-          <article key={`${review.name}-${review.service}-${index}`} className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-            <div className="mb-3 flex gap-1 text-brand-gold">
+          <article key={`${review.name}-${review.service}-${index}`} className="rounded-md border border-white/10 bg-coal p-5 shadow-sm">
+            <div className="mb-3 flex gap-1 text-brand-sky">
               {Array.from({ length: Number(review.rating) }).map((_, starIndex) => <Star key={starIndex} size={17} fill="currentColor" />)}
             </div>
-            <p className="leading-7 text-slate-700">"{review.review}"</p>
+            <p className="leading-7 text-slate-200">"{review.review}"</p>
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
               <p className="font-black">{review.name}</p>
-              <p className="rounded-md bg-brand-pale px-3 py-2 text-sm font-black text-brand-blue">{review.service}</p>
+              <p className="rounded-md bg-coal px-3 py-2 text-sm font-black text-brand-blue">{review.service}</p>
             </div>
           </article>
         ))}
